@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
         
-        /* ========== 顶部花束背景 ========== */
         .hero-section {
             min-height: 100vh;
             position: relative;
@@ -32,7 +31,6 @@
             overflow: hidden;
         }
         
-        /* 实拍花束背景图 */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -49,7 +47,6 @@
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 100%);
         }
         
-        /* 页面容器 */
         .page {
             min-height: auto;
             padding: 50px 20px;
@@ -60,7 +57,6 @@
             position: relative;
         }
         
-        /* ========== 封面页 ========== */
         .cover-content {
             text-align: center;
             position: relative;
@@ -139,7 +135,6 @@
             animation: bounce 2s infinite;
         }
         
-        /* ========== 人物简介页 ========== */
         .profile-page {
             background: linear-gradient(180deg, #2a3a4a 0%, #1e2d3a 100%);
         }
@@ -197,7 +192,6 @@
             border-left: 2px solid #8b6b4a;
         }
         
-        /* ========== 相册页 ========== */
         .gallery-page {
             background: #1e2d3a;
             min-height: auto;
@@ -244,7 +238,6 @@
             object-fit: cover;
         }
         
-        /* 灯箱效果 */
         .lightbox {
             position: fixed;
             top: 0;
@@ -285,7 +278,6 @@
             opacity: 1;
         }
         
-        /* ========== 悼念互动页 ========== */
         .memorial-page {
             background: #2a3a4a;
         }
@@ -339,7 +331,6 @@
             margin-top: 4px;
         }
         
-        /* 献花动画 */
         .flower-particle {
             position: fixed;
             font-size: 22px;
@@ -360,7 +351,6 @@
             }
         }
         
-        /* 点烛动画 */
         .candle-lit {
             animation: flicker 0.5s ease-in-out infinite alternate;
         }
@@ -370,7 +360,6 @@
             100% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 180, 100, 0.8)); }
         }
         
-        /* ========== 留言页 ========== */
         .message-page {
             background: linear-gradient(180deg, #2a3a4a 0%, #1a2634 100%);
             min-height: auto;
@@ -382,7 +371,6 @@
             max-width: 360px;
         }
         
-        /* ========== 页脚 ========== */
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -393,7 +381,6 @@
             border-top: 1px solid #2a3a4a;
         }
         
-        /* ========== 动画 ========== */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -416,7 +403,6 @@
             60% { transform: translateX(-50%) translateY(-4px); }
         }
         
-        /* 导航点 */
         .nav-dots {
             position: fixed;
             right: 15px;
@@ -448,7 +434,6 @@
     </style>
 </head>
 <body>
-    <!-- 导航点 -->
     <div class="nav-dots">
         <div class="nav-dot active" data-section="0"></div>
         <div class="nav-dot" data-section="1"></div>
@@ -457,7 +442,6 @@
         <div class="nav-dot" data-section="4"></div>
     </div>
     
-    <!-- 封面页 -->
     <section class="hero-section" id="section0">
         <div class="cover-content">
             <h1 class="cover-title">深切缅怀</h1>
@@ -469,10 +453,9 @@
         <p class="scroll-hint">向下滑动</p>
     </section>
     
-    <!-- 人物简介页 -->
     <section class="page profile-page" id="section1">
         <div class="photo-frame" onclick="openLightboxImg(this)">
-            <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="纪念照片">
+            <img src="photo 1.jpg" alt="纪念照片">
         </div>
         <h2 class="profile-name">朱莉莉女士</h2>
         <p class="profile-dates">1975年 — 2026年</p>
@@ -483,32 +466,30 @@
         </div>
     </section>
     
-    <!-- 相册页 -->
     <section class="page gallery-page" id="section2">
         <h2 class="section-title">回忆墙</h2>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightboxImg(this)">
-                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片1">
-            </div>
-            <div class="gallery-item" onclick="openLightboxImg(this)">
-                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片2">
-            </div>
-            <div class="gallery-item" onclick="openLightboxImg(this)">
-                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片3">
-            </div>
-            <div class="gallery-item" onclick="openLightboxImg(this)">
-                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片4">
-            </div>
-            <div class="gallery-item" onclick="openLightboxImg(this)">
-                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片5">
-            </div>
-            <div class="gallery-item" onclick="openLightboxImg(this)">
-                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片6">
-            </div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 2.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 3.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 4.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 5.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 6.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 7.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 8.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 9.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 10.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 11.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 12.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 13.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 14.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 15.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 16.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 17.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 18.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 19.jpg" alt="照片"></div>
         </div>
     </section>
     
-    <!-- 悼念互动页 -->
     <section class="page memorial-page" id="section3">
         <h2 class="section-title">追思寄托</h2>
         <div class="memorial-actions">
@@ -525,33 +506,27 @@
         </div>
     </section>
     
-    <!-- 留言页 -->
     <section class="page message-page" id="section4">
         <div class="message-container">
             <h2 class="section-title">留言•念想寄存处</h2>
-            <!-- 来必力评论插件 -->
             <livere-comment client-id="Bc6yjWNCdr8uIIdgfBw@"></livere-comment>
             <script type="module" src="https://www.livere.org/livere-widget.js"></script>
         </div>
     </section>
     
-    <!-- 页脚 -->
     <footer class="footer">
         <p>纪念我们的至爱 · 我们将永远怀念她</p>
     </footer>
     
-    <!-- 灯箱 -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightboxImg" src="" alt="">
     </div>
 
     <script>
-        // 初始化计数
         let flowerCount = 0;
         let candleCount = 0;
         
-        // 导航点功能
         const navDots = document.querySelectorAll('.nav-dot');
         const sections = document.querySelectorAll('section');
         
@@ -562,7 +537,6 @@
             });
         });
         
-        // 滚动监听
         window.addEventListener('scroll', () => {
             let current = 0;
             sections.forEach((section, index) => {
@@ -571,17 +545,14 @@
                     current = index;
                 }
             });
-            
             navDots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === current);
             });
         });
         
-        // 献花功能
         function offerFlower() {
             flowerCount++;
             document.getElementById('flowerCount').textContent = '已有 ' + flowerCount + ' 人献花';
-            
             const flowers = ['🌸', '🌺', '🌹', '🌷', '💐', '🌼'];
             for (let i = 0; i < 15; i++) {
                 setTimeout(() => {
@@ -591,26 +562,19 @@
                     flower.style.left = Math.random() * 100 + '%';
                     flower.style.top = '-50px';
                     document.body.appendChild(flower);
-                    
                     setTimeout(() => flower.remove(), 4000);
                 }, i * 100);
             }
         }
         
-        // 点烛功能
         function lightCandle() {
             candleCount++;
             document.getElementById('candleCount').textContent = '已有 ' + candleCount + ' 人点烛';
-            
             const candleIcon = document.getElementById('candleIcon');
             candleIcon.classList.add('candle-lit');
-            
-            setTimeout(() => {
-                candleIcon.classList.remove('candle-lit');
-            }, 3000);
+            setTimeout(() => candleIcon.classList.remove('candle-lit'), 3000);
         }
         
-        // 灯箱功能 - 图片放大
         function openLightboxImg(element) {
             const img = element.querySelector('img');
             if (img) {
@@ -625,11 +589,8 @@
             document.body.style.overflow = '';
         }
         
-        // ESC键关闭灯箱
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
+            if (e.key === 'Escape') closeLightbox();
         });
     </script>
 </body>
