@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
         
-        /* ========== 顶部花束背景 ========== */
         .hero-section {
             min-height: 100vh;
             position: relative;
@@ -32,7 +31,6 @@
             overflow: hidden;
         }
         
-        /* 实拍花束背景图 */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -49,7 +47,6 @@
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%);
         }
         
-        /* 页面容器 */
         .page {
             min-height: auto;
             padding: 50px 20px;
@@ -60,7 +57,6 @@
             position: relative;
         }
         
-        /* ========== 封面页 ========== */
         .cover-content {
             text-align: center;
             position: relative;
@@ -126,11 +122,12 @@
             font-size: 13px;
             color: #9a9a9a;
             letter-spacing: 6px;
+            margin-bottom: 40px;
         }
         
         .scroll-hint {
             position: absolute;
-            bottom: 60px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             color: #b8b8b8;
@@ -139,7 +136,6 @@
             animation: bounce 2s infinite;
         }
         
-        /* ========== 人物简介页 ========== */
         .profile-page {
             background: linear-gradient(180deg, #faf9f6 0%, #f7f6f1 100%);
         }
@@ -168,6 +164,18 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .photo-frame img.loaded {
+            opacity: 1;
+        }
+        
+        .photo-frame.loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
         }
         
         .profile-name {
@@ -197,7 +205,6 @@
             border-left: 2px solid #9ab87a;
         }
         
-        /* ========== 相册页 ========== */
         .gallery-page {
             background: #f7f6f1;
             min-height: auto;
@@ -242,9 +249,25 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         
-        /* 灯箱效果 */
+        .gallery-item img.loaded {
+            opacity: 1;
+        }
+        
+        .gallery-item.loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
         .lightbox {
             position: fixed;
             top: 0;
@@ -285,48 +308,6 @@
             opacity: 1;
         }
         
-        /* ========== 讣告页 ========== */
-        .obituary-page {
-            background: linear-gradient(180deg, #f7f6f1 0%, #f5f3ee 100%);
-        }
-        
-        .obituary-container {
-            max-width: 340px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 2px;
-            padding: 30px 25px;
-            border-top: 2px solid #9ab87a;
-        }
-        
-        .obituary-title {
-            font-size: 16px;
-            color: #7a9b57;
-            text-align: center;
-            margin-bottom: 20px;
-            letter-spacing: 6px;
-            font-weight: 300;
-        }
-        
-        .obituary-content {
-            font-size: 14px;
-            line-height: 2.2;
-            color: #6a6a6a;
-            text-align: justify;
-        }
-        
-        .obituary-content strong {
-            color: #7a9b57;
-        }
-        
-        .obituary-signature {
-            text-align: right;
-            margin-top: 20px;
-            color: #9a9a9a;
-            font-size: 12px;
-            line-height: 2;
-        }
-        
-        /* ========== 悼念互动页 ========== */
         .memorial-page {
             background: linear-gradient(180deg, #f7f6f1 0%, #f5f3ee 100%);
         }
@@ -380,7 +361,6 @@
             margin-top: 4px;
         }
         
-        /* 献花动画 */
         .flower-particle {
             position: fixed;
             font-size: 22px;
@@ -401,7 +381,6 @@
             }
         }
         
-        /* 点烛动画 */
         .candle-lit {
             animation: flicker 0.5s ease-in-out infinite alternate;
         }
@@ -411,7 +390,6 @@
             100% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 180, 100, 0.8)); }
         }
         
-        /* ========== 留言页 ========== */
         .message-page {
             background: linear-gradient(180deg, #f5f3ee 0%, #f8f7f2 100%);
             min-height: auto;
@@ -423,7 +401,6 @@
             max-width: 360px;
         }
         
-        /* 简洁留言输入框 */
         .msg-input-area { width: 100%; }
         .msg-textarea { 
             width: 100%; 
@@ -441,7 +418,6 @@
         .msg-textarea:focus { border-color: #9ab87a; background: rgba(255, 255, 255, 1); }
         .msg-textarea::placeholder { color: #b8b8b8; }
         
-        /* 图片上传区 */
         .img-upload-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
         .img-upload-btn { 
             width: 70px; 
@@ -481,7 +457,6 @@
             justify-content: center; 
         }
         
-        /* 发送按钮 */
         .send-row { display: flex; justify-content: flex-end; margin-top: 15px; }
         .send-btn { 
             padding: 10px 30px; 
@@ -495,7 +470,6 @@
         .send-btn:hover { background: #7a9b57; }
         .send-btn:disabled { background: #d8d5ce; cursor: not-allowed; }
         
-        /* 提示 */
         .toast {
             position: fixed;
             top: 50%;
@@ -512,58 +486,6 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         
-        /* ========== 留言展示区 ========== */
-        .messages-list {
-            margin-top: 30px;
-            width: 100%;
-        }
-        
-        .messages-list-title {
-            font-size: 12px;
-            color: #9a9a9a;
-            text-align: center;
-            margin-bottom: 18px;
-            letter-spacing: 3px;
-        }
-        
-        .message-item {
-            background: rgba(255, 255, 255, 0.5);
-            border-left: 2px solid #9ab87a;
-            padding: 12px 15px;
-            margin-bottom: 10px;
-        }
-        
-        .message-item-name {
-            font-size: 12px;
-            color: #7a9b57;
-            margin-bottom: 6px;
-        }
-        
-        .message-item-content {
-            font-size: 12px;
-            color: #6a6a6a;
-            line-height: 1.7;
-        }
-        
-        .message-item-image {
-            margin-top: 8px;
-            max-width: 100%;
-        }
-        
-        .message-item-image img {
-            max-width: 100%;
-            max-height: 200px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .message-item-time {
-            font-size: 10px;
-            color: #b8b8b8;
-            margin-top: 8px;
-        }
-        
-        /* ========== 页脚 ========== */
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -574,7 +496,6 @@
             border-top: 1px solid #e8e5de;
         }
         
-        /* ========== 动画 ========== */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -597,7 +518,6 @@
             60% { transform: translateX(-50%) translateY(-4px); }
         }
         
-        /* 导航点 */
         .nav-dots {
             position: fixed;
             right: 15px;
@@ -627,10 +547,9 @@
             transform: scale(1.3);
         }
         
-        /* Twikoo样式：完全隐藏原生表单，只显示评论列表 */
+        /* Twikoo样式 */
         #tcomment { margin-top: 0 !important; }
         
-        /* 强制隐藏所有Twikoo表单元素 */
         #tcomment form,
         #tcomment .tk-input,
         #tcomment .tk-input-container,
@@ -654,7 +573,6 @@
         #tcomment .tk-extras,
         #tcomment button:not(.tk-comment button) { display: none !important; }
         
-        /* 只显示评论列表 */
         #tcomment .tk-comments { 
             display: block !important; 
             margin-top: 20px !important;
@@ -695,7 +613,6 @@
             display: none !important; 
         }
         
-        /* 隐藏献花和点烛的特殊评论 */
         #tcomment .tk-comment[data-nick="[献花]"],
         #tcomment .tk-comment[data-nick="[点烛]"] {
             display: none !important;
@@ -703,7 +620,6 @@
     </style>
 </head>
 <body>
-    <!-- 导航点 -->
     <div class="nav-dots">
         <div class="nav-dot active" data-section="0"></div>
         <div class="nav-dot" data-section="1"></div>
@@ -712,7 +628,6 @@
         <div class="nav-dot" data-section="4"></div>
     </div>
     
-    <!-- 封面页 -->
     <section class="hero-section" id="section0">
         <div class="cover-content">
             <h1 class="cover-title">深切缅怀</h1>
@@ -724,10 +639,9 @@
         <p class="scroll-hint">向下滑动</p>
     </section>
     
-    <!-- 人物简介页 -->
     <section class="page profile-page" id="section1">
         <div class="photo-frame" onclick="openLightboxImg(this)">
-            <img src="photo 1.jpg" alt="纪念照片" loading="lazy">
+            <img src="photo 1.jpg" alt="纪念照片">
         </div>
         <h2 class="profile-name">朱莉莉</h2>
         <p class="profile-dates">1975年 — 2026年</p>
@@ -738,32 +652,30 @@
         </div>
     </section>
     
-    <!-- 相册页 -->
     <section class="page gallery-page" id="section2">
         <h2 class="section-title">回忆墙</h2>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 2.jpg" alt="照片1" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 3.jpg" alt="照片2" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 4.jpg" alt="照片3" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 5.jpg" alt="照片4" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 6.jpg" alt="照片5" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 7.jpg" alt="照片6" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 8.jpg" alt="照片7" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 9.jpg" alt="照片8" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 10.jpg" alt="照片9" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 11.jpg" alt="照片10" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 12.jpg" alt="照片11" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 13.jpg" alt="照片12" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 14.jpg" alt="照片13" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 15.jpg" alt="照片14" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 16.jpg" alt="照片15" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 17.jpg" alt="照片16" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 18.jpg" alt="照片17" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 19.jpg" alt="照片18" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 2.jpg" alt="照片1"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 3.jpg" alt="照片2"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 4.jpg" alt="照片3"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 5.jpg" alt="照片4"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 6.jpg" alt="照片5"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 7.jpg" alt="照片6"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 8.jpg" alt="照片7"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 9.jpg" alt="照片8"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 10.jpg" alt="照片9"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 11.jpg" alt="照片10"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 12.jpg" alt="照片11"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 13.jpg" alt="照片12"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 14.jpg" alt="照片13"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 15.jpg" alt="照片14"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 16.jpg" alt="照片15"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 17.jpg" alt="照片16"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 18.jpg" alt="照片17"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 19.jpg" alt="照片18"></div>
         </div>
     </section>
     
-    <!-- 悼念互动页 -->
     <section class="page memorial-page" id="section3">
         <h2 class="section-title">追思寄托</h2>
         <div class="memorial-actions">
@@ -780,16 +692,13 @@
         </div>
     </section>
     
-    <!-- 留言页 -->
     <section class="page message-page" id="section4">
         <div class="message-container">
             <h2 class="section-title">留言•念想寄存处</h2>
             
-            <!-- 自定义留言输入 -->
             <div class="msg-input-area">
                 <textarea class="msg-textarea" id="msgContent" placeholder="写下您的思念与祝福..."></textarea>
                 
-                <!-- 图片上传 -->
                 <div class="img-upload-row" id="imgUploadRow">
                     <div class="img-upload-btn" id="uploadBtn">
                         <input type="file" accept="image/*" onchange="addImage(this)">
@@ -803,12 +712,10 @@
                 </div>
             </div>
             
-            <!-- Twikoo 评论列表 -->
             <div id="tcomment"></div>
 
             <script src="https://cdn.jsdelivr.net/npm/twikoo@1.7.7/dist/twikoo.min.js"></script>
             <script>
-            // Twikoo初始化 - 兼容微信/Safari
             var twikooInstance = null;
             
             function initTwikoo() {
@@ -821,7 +728,6 @@
                     }
                 }).then(function(instance) {
                     twikooInstance = instance;
-                    console.log('Twikoo初始化成功');
                 }).catch(function(err) {
                     console.error('Twikoo初始化失败:', err);
                 });
@@ -862,27 +768,23 @@
         </div>
     </section>
     
-    <!-- 页脚 -->
     <footer class="footer">
         <p>纪念我们的至爱 · 我们将永远怀念她</p>
     </footer>
     
-    <!-- 灯箱 -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightboxImg" src="" alt="">
     </div>
     
-    <!-- 提示框 -->
     <div class="toast" id="toast">留言提交成功</div>
 
     <script>
-        // 初始化计数
         let flowerCount = 0;
         let candleCount = 0;
-        let currentImageData = null;
+        let uploadedImages = [];
+        const maxImages = 3;
         
-        // 从Twikoo加载献花和点烛统计数据
         async function loadStatistics() {
             try {
                 const response = await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
@@ -895,7 +797,6 @@
                 });
                 
                 const result = await response.json();
-                console.log('获取统计数据:', result);
                 
                 if (result.data && result.data.length > 0) {
                     result.data.forEach(function(comment) {
@@ -911,14 +812,11 @@
                 }
             } catch (e) {
                 console.error('加载统计数据失败:', e);
-                document.getElementById('flowerCount').textContent = '已有 0 人献花';
-                document.getElementById('candleCount').textContent = '已有 0 人点烛';
             }
         }
         
         loadStatistics();
         
-        // 导航点功能
         const navDots = document.querySelectorAll('.nav-dot');
         const sections = document.querySelectorAll('section');
         
@@ -929,7 +827,48 @@
             });
         });
         
-        // 滚动监听
+        function initImageLoading() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const photoFrame = document.querySelector('.photo-frame');
+            
+            galleryItems.forEach(item => {
+                const img = item.querySelector('img');
+                if (img) {
+                    item.classList.add('loading');
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                        item.classList.remove('loading');
+                    });
+                    img.addEventListener('error', function() {
+                        item.classList.remove('loading');
+                        item.style.background = '#f5f5f5';
+                        item.innerHTML = '<span style="color:#ccc;font-size:12px;">加载失败</span>';
+                    });
+                    if (img.complete) {
+                        img.classList.add('loaded');
+                        item.classList.remove('loading');
+                    }
+                }
+            });
+            
+            if (photoFrame) {
+                const img = photoFrame.querySelector('img');
+                if (img) {
+                    photoFrame.classList.add('loading');
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                        photoFrame.classList.remove('loading');
+                    });
+                    if (img.complete) {
+                        img.classList.add('loaded');
+                        photoFrame.classList.remove('loading');
+                    }
+                }
+            }
+        }
+        
+        window.addEventListener('DOMContentLoaded', initImageLoading);
+        
         window.addEventListener('scroll', () => {
             let current = 0;
             sections.forEach((section, index) => {
@@ -944,7 +883,6 @@
             });
         });
         
-        // 献花功能 - 存入Twikoo数据库
         async function offerFlower() {
             flowerCount++;
             document.getElementById('flowerCount').textContent = '已有 ' + flowerCount + ' 人献花';
@@ -958,7 +896,6 @@
                     flower.style.left = Math.random() * 100 + '%';
                     flower.style.top = '-50px';
                     document.body.appendChild(flower);
-                    
                     setTimeout(() => flower.remove(), 4000);
                 }, i * 100);
             }
@@ -979,23 +916,18 @@
                         }
                     })
                 });
-                console.log('献花数据已保存');
             } catch (e) {
                 console.error('献花数据保存失败:', e);
             }
         }
         
-        // 点烛功能 - 存入Twikoo数据库
         async function lightCandle() {
             candleCount++;
             document.getElementById('candleCount').textContent = '已有 ' + candleCount + ' 人点烛';
             
             const candleIcon = document.getElementById('candleIcon');
             candleIcon.classList.add('candle-lit');
-            
-            setTimeout(() => {
-                candleIcon.classList.remove('candle-lit');
-            }, 3000);
+            setTimeout(() => candleIcon.classList.remove('candle-lit'), 3000);
             
             try {
                 await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
@@ -1013,13 +945,11 @@
                         }
                     })
                 });
-                console.log('点烛数据已保存');
             } catch (e) {
                 console.error('点烛数据保存失败:', e);
             }
         }
         
-        // 灯箱功能 - 图片放大
         function openLightboxImg(element) {
             const img = element.querySelector('img');
             if (img) {
@@ -1034,16 +964,9 @@
             document.body.style.overflow = '';
         }
         
-        // ESC键关闭灯箱
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
+            if (e.key === 'Escape') closeLightbox();
         });
-        
-        // 图片预览功能
-        let uploadedImages = [];
-        const maxImages = 3;
         
         function addImage(input) {
             if (uploadedImages.length >= maxImages) {
@@ -1069,8 +992,7 @@
             
             const reader = new FileReader();
             reader.onload = function(e) {
-                const imgData = e.target.result;
-                uploadedImages.push(imgData);
+                uploadedImages.push(e.target.result);
                 renderImagePreviews();
                 input.value = '';
             };
@@ -1081,16 +1003,12 @@
             const row = document.getElementById('imgUploadRow');
             const uploadBtn = document.getElementById('uploadBtn');
             
-            const previews = row.querySelectorAll('.img-preview-item');
-            previews.forEach(p => p.remove());
+            row.querySelectorAll('.img-preview-item').forEach(p => p.remove());
             
             uploadedImages.forEach((img, index) => {
                 const div = document.createElement('div');
                 div.className = 'img-preview-item';
-                div.innerHTML = `
-                    <img src="${img}" alt="预览">
-                    <button class="remove-btn" onclick="removeImage(${index})">×</button>
-                `;
+                div.innerHTML = '<img src="' + img + '" alt="预览"><button class="remove-btn" onclick="removeImage(' + index + ')">×</button>';
                 row.insertBefore(div, uploadBtn);
             });
             
@@ -1102,7 +1020,6 @@
             renderImagePreviews();
         }
         
-        // 发送留言 - 优化版：提交后即时显示
         async function sendMessage() {
             const content = document.getElementById('msgContent').value.trim();
             
@@ -1119,7 +1036,7 @@
                 let fullContent = content;
                 if (uploadedImages.length > 0) {
                     uploadedImages.forEach((img, i) => {
-                        fullContent += `\n\n![图片${i+1}](${img})`;
+                        fullContent += '\n\n![图片' + (i+1) + '](' + img + ')';
                     });
                 }
                 
@@ -1140,7 +1057,6 @@
                 });
                 
                 const result = await response.json();
-                console.log('Twikoo提交结果:', result);
                 
                 if (result.result || result.id) {
                     showToast('留言已发送，感谢您的追思');
@@ -1157,11 +1073,8 @@
                     }, 1000);
                 } else {
                     showToast('发送失败，请稍后重试');
-                    console.error('提交失败:', result);
                 }
-                
             } catch (error) {
-                console.error('提交出错:', error);
                 showToast('发送失败，请检查网络');
             } finally {
                 sendBtn.disabled = false;
@@ -1173,10 +1086,7 @@
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.style.display = 'block';
-            
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 2500);
+            setTimeout(() => toast.style.display = 'none', 2500);
         }
     </script>
 </body>
