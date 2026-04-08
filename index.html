@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>深切缅怀 - 朱莉莉</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
             font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Serif SC', serif;
@@ -15,6 +19,7 @@
             overflow-x: hidden;
         }
         
+        /* ========== 顶部花束背景 ========== */
         .hero-section {
             min-height: 100vh;
             position: relative;
@@ -27,11 +32,14 @@
             overflow: hidden;
         }
         
+        /* 实拍花束背景图 */
         .hero-section::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 55%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
             background-image: url('https://s.coze.cn/image/LOLznq6_K7A/');
             background-size: cover;
             background-position: center top;
@@ -41,6 +49,7 @@
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%);
         }
         
+        /* 页面容器 */
         .page {
             min-height: auto;
             padding: 50px 20px;
@@ -51,11 +60,14 @@
             position: relative;
         }
         
+        /* ========== 封面页 ========== */
         .cover-content {
             text-align: center;
-            position: relative;
+            position: absolute;
             z-index: 10;
-            margin-top: 50px;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -64,72 +76,83 @@
         }
         
         .cover-title {
-            font-size: 76px;
-            letter-spacing: 20px;
+            font-size: 38px;
+            letter-spacing: 10px;
             color: #4a4a4a;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             animation: fadeInDown 1.5s ease;
             text-shadow: 0 2px 20px rgba(74, 74, 74, 0.15);
         }
         
         .cover-name {
-            font-size: 64px;
-            letter-spacing: 12px;
+            font-size: 32px;
+            letter-spacing: 6px;
             color: #4a4a4a;
             font-weight: 400;
-            margin: 20px 0;
+            margin: 10px 0;
             position: relative;
             display: block;
             text-align: center;
         }
         
-        .cover-name::before, .cover-name::after {
+        .cover-name::before,
+        .cover-name::after {
             content: '';
             position: absolute;
             top: 50%;
-            width: 100px;
-            height: 2px;
+            width: 50px;
+            height: 1px;
             background: linear-gradient(90deg, transparent, #9ab87a, transparent);
         }
         
-        .cover-name::before { left: calc(50% - 180px); }
-        .cover-name::after { right: calc(50% - 180px); left: auto; }
+        .cover-name::before {
+            left: calc(50% - 90px);
+        }
+        
+        .cover-name::after {
+            right: calc(50% - 90px);
+            left: auto;
+        }
         
         .cover-dates {
-            font-size: 28px;
+            font-size: 14px;
             color: #8a8a8a;
-            letter-spacing: 6px;
-            margin-top: 30px;
+            letter-spacing: 3px;
+            margin-top: 15px;
         }
         
         .cover-line {
-            width: 2px;
-            height: 80px;
+            width: 1px;
+            height: 40px;
             background: linear-gradient(180deg, #9ab87a, transparent);
-            margin: 30px auto;
+            margin: 15px auto;
         }
         
         .cover-subtitle {
-            font-size: 26px;
+            font-size: 13px;
             color: #9a9a9a;
-            letter-spacing: 12px;
-            margin-bottom: 20px;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
         }
         
         .scroll-hint {
             color: #b8b8b8;
-            font-size: 22px;
-            letter-spacing: 4px;
+            font-size: 11px;
+            letter-spacing: 2px;
             animation: bounce 2s infinite;
-            margin-top: 10px;
+            margin-top: 5px;
             text-align: center;
         }
         
-        .profile-page { background: linear-gradient(180deg, #faf9f6 0%, #f7f6f1 100%); }
+        /* ========== 人物简介页 ========== */
+        .profile-page {
+            background: linear-gradient(180deg, #faf9f6 0%, #f7f6f1 100%);
+        }
         
         .photo-frame {
-            width: 140px; height: 175px;
+            width: 140px;
+            height: 175px;
             background: linear-gradient(145deg, #ffffff, #f8f7f2);
             border: 2px solid #e8e5de;
             border-radius: 4px;
@@ -143,16 +166,21 @@
             cursor: pointer;
         }
         
-        .photo-frame:hover { border-color: #9ab87a; }
+        .photo-frame:hover {
+            border-color: #9ab87a;
+        }
         
         .photo-frame img {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             opacity: 0;
             transition: opacity 0.5s ease;
         }
         
-        .photo-frame img.loaded { opacity: 1; }
+        .photo-frame img.loaded {
+            opacity: 1;
+        }
         
         .photo-frame.loading {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -187,7 +215,12 @@
             border-left: 2px solid #9ab87a;
         }
         
-        .gallery-page { background: #f7f6f1; min-height: auto; padding: 45px 20px; }
+        /* ========== 相册页 ========== */
+        .gallery-page {
+            background: #f7f6f1;
+            min-height: auto;
+            padding: 45px 20px;
+        }
         
         .section-title {
             font-size: 18px;
@@ -224,26 +257,36 @@
         }
         
         .gallery-item img {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             opacity: 0;
             transition: opacity 0.5s ease;
         }
         
-        .gallery-item img.loaded { opacity: 1; }
+        .gallery-item img.loaded {
+            opacity: 1;
+        }
         
+        /* 图片加载中骨架屏 */
         .gallery-item.loading {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
             animation: shimmer 1.5s infinite;
         }
         
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
         
+        /* 灯箱效果 */
         .lightbox {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(255, 255, 255, 0.98);
             display: none;
             align-items: center;
@@ -251,17 +294,21 @@
             z-index: 2000;
         }
         
-        .lightbox.active { display: flex; }
+        .lightbox.active {
+            display: flex;
+        }
         
         .lightbox-content {
-            max-width: 95%; max-height: 95%;
+            max-width: 95%;
+            max-height: 95%;
             border-radius: 4px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
         
         .lightbox-close {
             position: absolute;
-            top: 15px; right: 20px;
+            top: 15px;
+            right: 20px;
             color: #7a9b57;
             font-size: 36px;
             cursor: pointer;
@@ -270,11 +317,20 @@
             z-index: 2001;
         }
         
-        .lightbox-close:hover { opacity: 1; }
+        .lightbox-close:hover {
+            opacity: 1;
+        }
         
-        .memorial-page { background: linear-gradient(180deg, #f7f6f1 0%, #f5f3ee 100%); }
+        /* ========== 悼念互动页 ========== */
+        .memorial-page {
+            background: linear-gradient(180deg, #f7f6f1 0%, #f5f3ee 100%);
+        }
         
-        .memorial-actions { display: flex; gap: 40px; margin-bottom: 15px; }
+        .memorial-actions {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 15px;
+        }
         
         .action-btn {
             display: flex;
@@ -284,10 +340,13 @@
             transition: transform 0.3s;
         }
         
-        .action-btn:active { transform: scale(0.95); }
+        .action-btn:active {
+            transform: scale(0.95);
+        }
         
         .action-icon {
-            width: 70px; height: 70px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -304,9 +363,19 @@
             box-shadow: 0 0 25px rgba(154, 184, 122, 0.25);
         }
         
-        .action-text { font-size: 13px; color: #7a9b57; letter-spacing: 2px; }
-        .counter { font-size: 10px; color: #9a9a9a; margin-top: 4px; }
+        .action-text {
+            font-size: 13px;
+            color: #7a9b57;
+            letter-spacing: 2px;
+        }
         
+        .counter {
+            font-size: 10px;
+            color: #9a9a9a;
+            margin-top: 4px;
+        }
+        
+        /* 献花动画 */
         .flower-particle {
             position: fixed;
             font-size: 22px;
@@ -317,52 +386,72 @@
         }
         
         @keyframes flowerFall {
-            0% { opacity: 0.8; transform: translateY(-50px) rotate(0deg); }
-            100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+            0% {
+                opacity: 0.8;
+                transform: translateY(-50px) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
         }
         
-        .candle-lit { animation: flicker 0.5s ease-in-out infinite alternate; }
+        /* 点烛动画 */
+        .candle-lit {
+            animation: flicker 0.5s ease-in-out infinite alternate;
+        }
         
         @keyframes flicker {
             0% { filter: brightness(1) drop-shadow(0 0 10px rgba(255, 180, 100, 0.5)); }
             100% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 180, 100, 0.8)); }
         }
         
-        .message-page { background: linear-gradient(180deg, #f5f3ee 0%, #f8f7f2 100%); min-height: auto; padding: 45px 20px; }
-        .message-container { width: 100%; max-width: 360px; }
-        .msg-input-area { width: 100%; }
-        
-        .msg-textarea { 
-            width: 100%; min-height: 100px; padding: 15px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid #e8e5de;
-            border-radius: 4px;
-            color: #5a5a5a;
-            font-size: 14px;
-            outline: none;
-            resize: none;
-            line-height: 1.6;
+        /* ========== 留言页 ========== */
+        .message-page {
+            background: linear-gradient(180deg, #f5f3ee 0%, #f8f7f2 100%);
+            min-height: auto;
+            padding: 45px 20px;
         }
         
+        .message-container {
+            width: 100%;
+            max-width: 360px;
+        }
+        
+        /* 简洁留言输入框 */
+        .msg-input-area { width: 100%; }
+        .msg-textarea { 
+            width: 100%; 
+            min-height: 100px; 
+            padding: 15px; 
+            background: rgba(255, 255, 255, 0.8); 
+            border: 1px solid #e8e5de; 
+            border-radius: 4px; 
+            color: #5a5a5a; 
+            font-size: 14px; 
+            outline: none; 
+            resize: none; 
+            line-height: 1.6; 
+        }
         .msg-textarea:focus { border-color: #9ab87a; background: rgba(255, 255, 255, 1); }
         .msg-textarea::placeholder { color: #b8b8b8; }
         
+        /* 图片上传区 */
         .img-upload-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
-        
         .img-upload-btn { 
-            width: 70px; height: 70px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px dashed #d8d5ce;
-            border-radius: 4px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            width: 70px; 
+            height: 70px; 
+            background: rgba(255, 255, 255, 0.8); 
+            border: 1px dashed #d8d5ce; 
+            border-radius: 4px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            position: relative; 
+            overflow: hidden; 
         }
-        
         .img-upload-btn:hover { border-color: #9ab87a; }
         .img-upload-btn input { position: absolute; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
         .img-upload-btn .plus-icon { font-size: 24px; color: #b8b8b8; }
@@ -370,40 +459,42 @@
         
         .img-preview-item { width: 70px; height: 70px; border-radius: 4px; position: relative; overflow: hidden; }
         .img-preview-item img { width: 100%; height: 100%; object-fit: cover; }
-        
         .img-preview-item .remove-btn { 
-            position: absolute;
-            top: -5px; right: -5px;
-            width: 20px; height: 20px;
-            background: #e88a8a;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; 
+            top: -5px; 
+            right: -5px; 
+            width: 20px; 
+            height: 20px; 
+            background: #e88a8a; 
+            color: #fff; 
+            border: none; 
+            border-radius: 50%; 
+            font-size: 14px; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
         }
         
+        /* 发送按钮 */
         .send-row { display: flex; justify-content: flex-end; margin-top: 15px; }
-        
         .send-btn { 
-            padding: 10px 30px;
-            background: #9ab87a;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            font-size: 14px;
-            cursor: pointer;
+            padding: 10px 30px; 
+            background: #9ab87a; 
+            border: none; 
+            border-radius: 4px; 
+            color: #fff; 
+            font-size: 14px; 
+            cursor: pointer; 
         }
-        
         .send-btn:hover { background: #7a9b57; }
         .send-btn:disabled { background: #d8d5ce; cursor: not-allowed; }
         
+        /* 提示 */
         .toast {
             position: fixed;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(255, 255, 255, 0.98);
             color: #7a9b57;
@@ -416,6 +507,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         
+        /* ========== 页脚 ========== */
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -426,11 +518,21 @@
             border-top: 1px solid #e8e5de;
         }
         
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* ========== 动画 ========== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         @keyframes bounce {
@@ -439,6 +541,7 @@
             60% { transform: translateY(-4px); }
         }
         
+        /* 导航点 */
         .nav-dots {
             position: fixed;
             right: 15px;
@@ -451,44 +554,95 @@
         }
         
         .nav-dot {
-            width: 7px; height: 7px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: #d8d5ce;
             cursor: pointer;
             transition: all 0.3s;
         }
         
-        .nav-dot:hover, .nav-dot.active { background: #9ab87a; }
-        .nav-dot.active { transform: scale(1.3); }
-        
-        #tcomment { margin-top: 0 !important; }
-        
-        #tcomment > form, #tcomment > .tk-input, #tcomment > .tk-input-container,
-        #tcomment > .tk-meta-input, #tcomment > .tk-row, #tcomment .tk-footer,
-        #tcomment .tk-submit, #tcomment .tk-toolbar, #tcomment .tk-actions,
-        #tcomment .tk-admin, #tcomment .tk-main > form, #tcomment .tk-preview,
-        #tcomment .tk-owo-emotion, #tcomment textarea, #tcomment input,
-        #tcomment .tk-meta, #tcomment .tk-user, #tcomment .tk-avatar,
-        #tcomment .tk-extras, #tcomment button[class*="tk-"]:not(.tk-comment button),
-        .tk-input-container, .tk-meta-input, .tk-row, .tk-input { display: none !important; }
-        
-        #tcomment .tk-comments { display: block !important; margin-top: 20px !important; }
-        
-        #tcomment .tk-comment { 
-            background: rgba(255, 255, 255, 0.5);
-            border-left: 2px solid #9ab87a;
-            padding: 12px 15px;
-            margin-bottom: 12px;
-            border-radius: 0 4px 4px 0;
+        .nav-dot:hover,
+        .nav-dot.active {
+            background: #9ab87a;
         }
         
-        #tcomment .tk-nick { color: #7a9b57; font-size: 13px; }
-        #tcomment .tk-content { color: #6a6a6a; font-size: 13px; line-height: 1.7; }
-        #tcomment .tk-content img { max-width: 100%; border-radius: 4px; margin-top: 8px; }
-        #tcomment .tk-time { color: #b8b8b8; font-size: 11px; }
+        .nav-dot.active {
+            transform: scale(1.3);
+        }
+        
+        /* Twikoo样式：完全隐藏原生表单，只显示评论列表 */
+        #tcomment { 
+            margin-top: 0 !important; 
+        }
+        
+        /* 强制隐藏所有Twikoo表单元素 - 兼容所有浏览器 */
+        #tcomment > form,
+        #tcomment > .tk-input,
+        #tcomment > .tk-input-container,
+        #tcomment > .tk-meta-input,
+        #tcomment > .tk-row,
+        #tcomment .tk-footer,
+        #tcomment .tk-submit,
+        #tcomment .tk-toolbar,
+        #tcomment .tk-actions,
+        #tcomment .tk-admin,
+        #tcomment .tk-main > form,
+        #tcomment .tk-preview,
+        #tcomment .tk-owo-emotion,
+        #tcomment textarea,
+        #tcomment input,
+        #tcomment .tk-meta,
+        #tcomment .tk-user,
+        #tcomment .tk-avatar,
+        #tcomment .tk-extras,
+        #tcomment button[class*="tk-"]:not(.tk-comment button),
+        .tk-input-container,
+        .tk-meta-input,
+        .tk-row,
+        .tk-input { 
+            display: none !important; 
+        }
+        
+        /* 只显示评论列表 */
+        #tcomment .tk-comments { 
+            display: block !important; 
+            margin-top: 20px !important;
+        }
+        
+        #tcomment .tk-comment { 
+            background: rgba(255, 255, 255, 0.5); 
+            border-left: 2px solid #9ab87a; 
+            padding: 12px 15px; 
+            margin-bottom: 12px; 
+            border-radius: 0 4px 4px 0; 
+        }
+        
+        #tcomment .tk-nick { 
+            color: #7a9b57; 
+            font-size: 13px; 
+        }
+        
+        #tcomment .tk-content { 
+            color: #6a6a6a; 
+            font-size: 13px; 
+            line-height: 1.7; 
+        }
+        
+        #tcomment .tk-content img { 
+            max-width: 100%; 
+            border-radius: 4px; 
+            margin-top: 8px; 
+        }
+        
+        #tcomment .tk-time { 
+            color: #b8b8b8; 
+            font-size: 11px; 
+        }
     </style>
 </head>
 <body>
+    <!-- 导航点 -->
     <div class="nav-dots">
         <div class="nav-dot active" data-section="0"></div>
         <div class="nav-dot" data-section="1"></div>
@@ -497,6 +651,7 @@
         <div class="nav-dot" data-section="4"></div>
     </div>
     
+    <!-- 封面页 -->
     <section class="hero-section" id="section0">
         <div class="cover-content">
             <h1 class="cover-title">深切缅怀</h1>
@@ -508,6 +663,7 @@
         </div>
     </section>
     
+    <!-- 人物简介页 -->
     <section class="page profile-page" id="section1">
         <div class="photo-frame" onclick="openLightboxImg(this)">
             <img src="photo 1.jpg" alt="纪念照片">
@@ -521,6 +677,7 @@
         </div>
     </section>
     
+    <!-- 相册页 -->
     <section class="page gallery-page" id="section2">
         <h2 class="section-title">回忆墙</h2>
         <div class="gallery-grid">
@@ -545,6 +702,7 @@
         </div>
     </section>
     
+    <!-- 悼念互动页 -->
     <section class="page memorial-page" id="section3">
         <h2 class="section-title">追思寄托</h2>
         <div class="memorial-actions">
@@ -561,11 +719,16 @@
         </div>
     </section>
     
+    <!-- 留言页 -->
     <section class="page message-page" id="section4">
         <div class="message-container">
             <h2 class="section-title">留言•念想寄存处</h2>
+            
+            <!-- 自定义留言输入 -->
             <div class="msg-input-area">
                 <textarea class="msg-textarea" id="msgContent" placeholder="写下您的思念与祝福..."></textarea>
+                
+                <!-- 图片上传 -->
                 <div class="img-upload-row" id="imgUploadRow">
                     <div class="img-upload-btn" id="uploadBtn">
                         <input type="file" accept="image/*" onchange="addImage(this)">
@@ -573,14 +736,20 @@
                         <span class="text">添加图片</span>
                     </div>
                 </div>
+                
                 <div class="send-row">
                     <button class="send-btn" id="sendBtn" onclick="sendMessage()">发送</button>
                 </div>
             </div>
+            
+            <!-- Twikoo 评论列表 -->
             <div id="tcomment"></div>
+
             <script src="https://cdn.jsdelivr.net/npm/twikoo@1.7.7/dist/twikoo.min.js"></script>
             <script>
+            // Twikoo初始化 - 兼容微信/Safari
             var twikooInstance = null;
+            
             function initTwikoo() {
                 twikoo.init({
                     envId: 'https://twikoo-vercel-theta-nine.vercel.app',
@@ -598,10 +767,19 @@
                     console.error('Twikoo初始化失败:', err);
                 });
             }
+            
+            // 隐藏Twikoo原生表单
             function hideTwikooInputForm() {
                 var tcomment = document.getElementById('tcomment');
                 if (!tcomment) return;
-                var hideSelectors = ['form', '.tk-input', '.tk-input-container', '.tk-meta-input', '.tk-row', '.tk-footer', '.tk-submit', '.tk-toolbar', '.tk-actions', '.tk-admin', '.tk-preview', '.tk-owo-emotion', 'textarea', 'input', '.tk-meta', '.tk-user', '.tk-avatar', '.tk-extras'];
+                
+                var hideSelectors = [
+                    'form', '.tk-input', '.tk-input-container', '.tk-meta-input',
+                    '.tk-row', '.tk-footer', '.tk-submit', '.tk-toolbar', '.tk-actions',
+                    '.tk-admin', '.tk-preview', '.tk-owo-emotion',
+                    'textarea', 'input', '.tk-meta', '.tk-user', '.tk-avatar', '.tk-extras'
+                ];
+                
                 hideSelectors.forEach(function(sel) {
                     var elements = tcomment.querySelectorAll(sel);
                     for (var i = 0; i < elements.length; i++) {
@@ -612,6 +790,8 @@
                     }
                 });
             }
+            
+            // 隐藏献花和点烛的特殊评论
             function hideFlowerCandleComments() {
                 var comments = document.querySelectorAll('.tk-comment');
                 for (var i = 0; i < comments.length; i++) {
@@ -624,20 +804,24 @@
                     }
                 }
             }
+            
             initTwikoo();
             </script>
         </div>
     </section>
     
+    <!-- 页脚 -->
     <footer class="footer">
         <p>纪念我们的至爱 · 我们将永远怀念她</p>
     </footer>
     
+    <!-- 灯箱 -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightboxImg" src="" alt="">
     </div>
     
+    <!-- 提示框 -->
     <div class="toast" id="toast">留言提交成功</div>
 
     <script>
@@ -649,24 +833,27 @@
                 const response = await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ event: 'COMMENT_GET', url: '/' })
+                    body: JSON.stringify({
+                        event: 'COMMENT_GET',
+                        url: '/'
+                    })
                 });
+                
                 const result = await response.json();
-                console.log('获取统计数据:', result);
                 flowerCount = 0;
                 candleCount = 0;
+                
                 if (result.data && result.data.length > 0) {
                     result.data.forEach(function(comment) {
                         if (comment.nick === '[献花]') flowerCount++;
                         else if (comment.nick === '[点烛]') candleCount++;
                     });
                 }
+                
                 document.getElementById('flowerCount').textContent = '已有 ' + flowerCount + ' 人献花';
                 document.getElementById('candleCount').textContent = '已有 ' + candleCount + ' 人点烛';
             } catch (e) {
                 console.error('加载统计数据失败:', e);
-                document.getElementById('flowerCount').textContent = '已有 0 人献花';
-                document.getElementById('candleCount').textContent = '已有 0 人点烛';
             }
         }
         
@@ -685,6 +872,7 @@
         function initImageLoading() {
             const galleryItems = document.querySelectorAll('.gallery-item');
             const photoFrame = document.querySelector('.photo-frame');
+            
             galleryItems.forEach(item => {
                 const img = item.querySelector('img');
                 if (img) {
@@ -704,6 +892,7 @@
                     }
                 }
             });
+            
             if (photoFrame) {
                 const img = photoFrame.querySelector('img');
                 if (img) {
@@ -730,6 +919,7 @@
                     current = index;
                 }
             });
+            
             navDots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === current);
             });
@@ -738,6 +928,7 @@
         async function offerFlower() {
             flowerCount++;
             document.getElementById('flowerCount').textContent = '已有 ' + flowerCount + ' 人献花';
+            
             const flowers = ['🌸', '🌺', '🌹', '🌷', '💐', '🌼'];
             for (let i = 0; i < 15; i++) {
                 setTimeout(() => {
@@ -750,17 +941,22 @@
                     setTimeout(() => flower.remove(), 4000);
                 }, i * 100);
             }
+            
             try {
-                const response = await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
+                await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         event: 'COMMENT_SUBMIT',
-                        comment: { nick: '[献花]', mail: '', link: '', url: '/', content: '🌸 献上一束鲜花，寄托哀思' }
+                        comment: {
+                            nick: '[献花]',
+                            mail: '',
+                            link: '',
+                            url: '/',
+                            content: '🌸 献上一束鲜花，寄托哀思'
+                        }
                     })
                 });
-                const result = await response.json();
-                console.log('献花数据已保存:', result);
             } catch (e) {
                 console.error('献花数据保存失败:', e);
             }
@@ -769,22 +965,26 @@
         async function lightCandle() {
             candleCount++;
             document.getElementById('candleCount').textContent = '已有 ' + candleCount + ' 人点烛';
+            
             const candleIcon = document.getElementById('candleIcon');
             candleIcon.classList.add('candle-lit');
-            setTimeout(() => {
-                candleIcon.classList.remove('candle-lit');
-            }, 3000);
+            setTimeout(() => candleIcon.classList.remove('candle-lit'), 3000);
+            
             try {
-                const response = await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
+                await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         event: 'COMMENT_SUBMIT',
-                        comment: { nick: '[点烛]', mail: '', link: '', url: '/', content: '🕯️ 点亮一支蜡烛，照亮前行' }
+                        comment: {
+                            nick: '[点烛]',
+                            mail: '',
+                            link: '',
+                            url: '/',
+                            content: '🕯️ 点亮一支蜡烛，照亮前行'
+                        }
                     })
                 });
-                const result = await response.json();
-                console.log('点烛数据已保存:', result);
             } catch (e) {
                 console.error('点烛数据保存失败:', e);
             }
@@ -792,4 +992,139 @@
         
         function openLightboxImg(element) {
             const img = element.querySelector('img');
-            if (img)
+            if (img) {
+                document.getElementById('lightboxImg').src = img.src;
+                document.getElementById('lightbox').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+        
+        let uploadedImages = [];
+        const maxImages = 3;
+        
+        function addImage(input) {
+            if (uploadedImages.length >= maxImages) {
+                showToast('最多只能上传3张图片');
+                return;
+            }
+            
+            const file = input.files[0];
+            if (!file) return;
+            
+            const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (!validTypes.includes(file.type)) {
+                showToast('请上传 jpg、png 或 gif 格式的图片');
+                input.value = '';
+                return;
+            }
+            
+            if (file.size > 5 * 1024 * 1024) {
+                showToast('图片大小不能超过 5MB');
+                input.value = '';
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedImages.push(e.target.result);
+                renderImagePreviews();
+                input.value = '';
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function renderImagePreviews() {
+            const row = document.getElementById('imgUploadRow');
+            const uploadBtn = document.getElementById('uploadBtn');
+            
+            const previews = row.querySelectorAll('.img-preview-item');
+            previews.forEach(p => p.remove());
+            
+            uploadedImages.forEach((img, index) => {
+                const div = document.createElement('div');
+                div.className = 'img-preview-item';
+                div.innerHTML = '<img src="' + img + '" alt="预览"><button class="remove-btn" onclick="removeImage(' + index + ')">×</button>';
+                row.insertBefore(div, uploadBtn);
+            });
+            
+            uploadBtn.style.display = uploadedImages.length >= maxImages ? 'none' : 'flex';
+        }
+        
+        function removeImage(index) {
+            uploadedImages.splice(index, 1);
+            renderImagePreviews();
+        }
+        
+        async function sendMessage() {
+            const content = document.getElementById('msgContent').value.trim();
+            
+            if (!content && uploadedImages.length === 0) {
+                showToast('请输入留言内容或上传图片');
+                return;
+            }
+            
+            const sendBtn = document.getElementById('sendBtn');
+            sendBtn.disabled = true;
+            sendBtn.textContent = '发送中...';
+            
+            try {
+                let fullContent = content;
+                if (uploadedImages.length > 0) {
+                    uploadedImages.forEach((img, i) => {
+                        fullContent += '\n\n![图片' + (i+1) + '](' + img + ')';
+                    });
+                }
+                
+                const response = await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        event: 'COMMENT_SUBMIT',
+                        comment: {
+                            nick: '匿名用户',
+                            mail: '',
+                            link: '',
+                            url: '/',
+                            content: fullContent
+                        }
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.result || result.id || result.data) {
+                    showToast('留言已发送，感谢您的追思');
+                    document.getElementById('msgContent').value = '';
+                    uploadedImages = [];
+                    renderImagePreviews();
+                    setTimeout(function() { location.reload(); }, 1500);
+                } else {
+                    showToast('发送失败，请稍后重试');
+                }
+            } catch (error) {
+                console.error('提交出错:', error);
+                showToast('发送失败，请检查网络');
+            } finally {
+                sendBtn.disabled = false;
+                sendBtn.textContent = '发送';
+            }
+        }
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 2500);
+        }
+    </script>
+</body>
+</html>
