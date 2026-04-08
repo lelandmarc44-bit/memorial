@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>深切緬懷 </title>
+    <title>深切缅怀 - 朱莉莉女士</title>
     <style>
         * {
             margin: 0;
@@ -27,7 +27,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             background: linear-gradient(180deg, rgba(26, 38, 52, 0.4) 0%, rgba(26, 38, 52, 0.92) 60%, #1a2634 100%);
             overflow: hidden;
         }
@@ -51,8 +51,8 @@
         
         /* 页面容器 */
         .page {
-            min-height: 100vh;
-            padding: 60px 20px;
+            min-height: auto;
+            padding: 50px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -65,25 +65,25 @@
             text-align: center;
             position: relative;
             z-index: 10;
-            margin-top: 80px;
+            margin-top: 60px;
         }
         
         .cover-title {
-            font-size: 42px;
-            letter-spacing: 12px;
+            font-size: 38px;
+            letter-spacing: 10px;
             color: #d4c4a8;
-            font-weight: 300;
-            margin-bottom: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
             animation: fadeInDown 1.5s ease;
             text-shadow: 0 2px 20px rgba(0,0,0,0.5);
         }
         
         .cover-name {
-            font-size: 36px;
-            letter-spacing: 8px;
+            font-size: 32px;
+            letter-spacing: 6px;
             color: #fff;
             font-weight: 400;
-            margin: 30px 0;
+            margin: 15px 0;
             position: relative;
             display: inline-block;
         }
@@ -93,49 +93,49 @@
             content: '';
             position: absolute;
             top: 50%;
-            width: 60px;
+            width: 50px;
             height: 1px;
             background: linear-gradient(90deg, transparent, #8b6b4a, transparent);
         }
         
         .cover-name::before {
             right: 100%;
-            margin-right: 25px;
+            margin-right: 20px;
         }
         
         .cover-name::after {
             left: 100%;
-            margin-left: 25px;
+            margin-left: 20px;
         }
         
         .cover-dates {
-            font-size: 16px;
+            font-size: 14px;
             color: #999;
-            letter-spacing: 4px;
-            margin-top: 30px;
+            letter-spacing: 3px;
+            margin-top: 20px;
         }
         
         .cover-line {
             width: 1px;
-            height: 60px;
+            height: 40px;
             background: linear-gradient(180deg, #8b6b4a, transparent);
-            margin: 40px auto;
+            margin: 20px auto;
         }
         
         .cover-subtitle {
-            font-size: 14px;
+            font-size: 13px;
             color: #666;
-            letter-spacing: 8px;
+            letter-spacing: 6px;
         }
         
         .scroll-hint {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             color: #555;
-            font-size: 12px;
-            letter-spacing: 3px;
+            font-size: 11px;
+            letter-spacing: 2px;
             animation: bounce 2s infinite;
         }
         
@@ -145,16 +145,16 @@
         }
         
         .photo-frame {
-            width: 160px;
-            height: 200px;
+            width: 140px;
+            height: 175px;
             background: linear-gradient(145deg, #3a4a5a, #2a3a4a);
             border: 2px solid #4a5a6a;
             border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -171,27 +171,27 @@
         }
         
         .profile-name {
-            font-size: 28px;
+            font-size: 24px;
             color: #d4c4a8;
-            letter-spacing: 6px;
-            margin-bottom: 15px;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
             font-weight: 400;
         }
         
         .profile-dates {
-            font-size: 14px;
+            font-size: 13px;
             color: #777;
-            letter-spacing: 3px;
-            margin-bottom: 35px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
         }
         
         .profile-bio {
-            max-width: 320px;
+            max-width: 300px;
             text-align: center;
-            line-height: 2.4;
-            font-size: 15px;
+            line-height: 2;
+            font-size: 14px;
             color: #aaa;
-            padding: 30px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.02);
             border-radius: 2px;
             border-left: 2px solid #8b6b4a;
@@ -201,23 +201,23 @@
         .gallery-page {
             background: #1e2d3a;
             min-height: auto;
-            padding: 80px 20px;
+            padding: 45px 20px;
         }
         
         .section-title {
-            font-size: 20px;
+            font-size: 18px;
             color: #d4c4a8;
             text-align: center;
-            margin-bottom: 40px;
-            letter-spacing: 8px;
+            margin-bottom: 25px;
+            letter-spacing: 6px;
             font-weight: 300;
         }
         
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            max-width: 400px;
+            gap: 8px;
+            max-width: 360px;
             width: 100%;
         }
         
@@ -235,7 +235,7 @@
         
         .gallery-item:hover {
             transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
         
         .gallery-item img {
@@ -271,10 +271,10 @@
         
         .lightbox-close {
             position: absolute;
-            top: 20px;
+            top: 15px;
             right: 20px;
             color: #fff;
-            font-size: 40px;
+            font-size: 36px;
             cursor: pointer;
             opacity: 0.6;
             transition: opacity 0.3s;
@@ -285,47 +285,6 @@
             opacity: 1;
         }
         
-        /* ========== 讣告页 ========== */
-        .obituary-page {
-            background: linear-gradient(180deg, #2a3a4a 0%, #1e2d3a 100%);
-        }
-        
-        .obituary-container {
-            max-width: 360px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 2px;
-            padding: 40px 30px;
-            border-top: 2px solid #8b6b4a;
-        }
-        
-        .obituary-title {
-            font-size: 18px;
-            color: #d4c4a8;
-            text-align: center;
-            margin-bottom: 30px;
-            letter-spacing: 8px;
-            font-weight: 300;
-        }
-        
-        .obituary-content {
-            font-size: 15px;
-            line-height: 2.6;
-            color: #bbb;
-            text-align: justify;
-        }
-        
-        .obituary-content strong {
-            color: #d4c4a8;
-        }
-        
-        .obituary-signature {
-            text-align: right;
-            margin-top: 35px;
-            color: #666;
-            font-size: 13px;
-            line-height: 2.2;
-        }
-        
         /* ========== 悼念互动页 ========== */
         .memorial-page {
             background: #2a3a4a;
@@ -333,8 +292,8 @@
         
         .memorial-actions {
             display: flex;
-            gap: 60px;
-            margin-bottom: 20px;
+            gap: 40px;
+            margin-bottom: 15px;
         }
         
         .action-btn {
@@ -350,14 +309,14 @@
         }
         
         .action-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
-            margin-bottom: 15px;
+            font-size: 32px;
+            margin-bottom: 12px;
             transition: all 0.3s;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid #3a4a5a;
@@ -365,25 +324,25 @@
         
         .action-btn:hover .action-icon {
             border-color: #8b6b4a;
-            box-shadow: 0 0 30px rgba(139, 107, 74, 0.2);
+            box-shadow: 0 0 25px rgba(139, 107, 74, 0.2);
         }
         
         .action-text {
-            font-size: 14px;
+            font-size: 13px;
             color: #888;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
         
         .counter {
-            font-size: 11px;
+            font-size: 10px;
             color: #555;
-            margin-top: 5px;
+            margin-top: 4px;
         }
         
         /* 献花动画 */
         .flower-particle {
             position: fixed;
-            font-size: 24px;
+            font-size: 22px;
             pointer-events: none;
             animation: flowerFall 4s ease-out forwards;
             z-index: 1000;
@@ -415,7 +374,7 @@
         .message-page {
             background: linear-gradient(180deg, #2a3a4a 0%, #1a2634 100%);
             min-height: auto;
-            padding: 80px 20px;
+            padding: 45px 20px;
         }
         
         .message-container {
@@ -423,141 +382,13 @@
             max-width: 360px;
         }
         
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-label {
-            display: block;
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid #3a4a5a;
-            border-radius: 2px;
-            color: #ddd;
-            font-size: 14px;
-            outline: none;
-            transition: all 0.3s;
-        }
-        
-        .form-input:focus {
-            border-color: #8b6b4a;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .form-input::placeholder {
-            color: #555;
-        }
-        
-        .form-textarea {
-            width: 100%;
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid #3a4a5a;
-            border-radius: 2px;
-            color: #ddd;
-            font-size: 14px;
-            outline: none;
-            min-height: 100px;
-            resize: none;
-            transition: all 0.3s;
-        }
-        
-        .form-textarea:focus {
-            border-color: #8b6b4a;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .form-textarea::placeholder {
-            color: #555;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: transparent;
-            border: 1px solid #8b6b4a;
-            border-radius: 2px;
-            color: #d4c4a8;
-            font-size: 14px;
-            letter-spacing: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background: rgba(139, 107, 74, 0.1);
-        }
-        
-        /* 留言成功提示 */
-        .toast {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(26, 38, 52, 0.98);
-            color: #d4c4a8;
-            padding: 20px 35px;
-            border-radius: 2px;
-            font-size: 14px;
-            z-index: 2000;
-            display: none;
-            border: 1px solid #3a4a5a;
-        }
-        
-        /* ========== 留言展示区 ========== */
-        .messages-list {
-            margin-top: 50px;
-            width: 100%;
-        }
-        
-        .messages-list-title {
-            font-size: 12px;
-            color: #555;
-            text-align: center;
-            margin-bottom: 25px;
-            letter-spacing: 4px;
-        }
-        
-        .message-item {
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 2px solid #8b6b4a;
-            padding: 15px 18px;
-            margin-bottom: 12px;
-        }
-        
-        .message-item-name {
-            font-size: 13px;
-            color: #d4c4a8;
-            margin-bottom: 8px;
-        }
-        
-        .message-item-content {
-            font-size: 13px;
-            color: #999;
-            line-height: 1.8;
-        }
-        
-        .message-item-time {
-            font-size: 11px;
-            color: #444;
-            margin-top: 10px;
-        }
-        
         /* ========== 页脚 ========== */
         .footer {
             text-align: center;
-            padding: 60px 20px;
+            padding: 30px 20px;
             color: #4a5a6a;
-            font-size: 12px;
-            letter-spacing: 3px;
+            font-size: 11px;
+            letter-spacing: 2px;
             background: #1a2634;
             border-top: 1px solid #2a3a4a;
         }
@@ -588,18 +419,18 @@
         /* 导航点 */
         .nav-dots {
             position: fixed;
-            right: 20px;
+            right: 15px;
             top: 50%;
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             z-index: 100;
         }
         
         .nav-dot {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: #3a4a5a;
             cursor: pointer;
@@ -624,38 +455,37 @@
         <div class="nav-dot" data-section="2"></div>
         <div class="nav-dot" data-section="3"></div>
         <div class="nav-dot" data-section="4"></div>
-        <div class="nav-dot" data-section="5"></div>
     </div>
     
     <!-- 封面页 -->
     <section class="hero-section" id="section0">
         <div class="cover-content">
-            <h1 class="cover-title">深切緬懷</h1>
+            <h1 class="cover-title">深切缅怀</h1>
             <h2 class="cover-name">朱莉莉女士</h2>
-            <p class="cover-dates">【1975】—【2026】</p>
+            <p class="cover-dates">1975 — 2026</p>
             <div class="cover-line"></div>
-            <p class="cover-subtitle">永遠懷念</p>
+            <p class="cover-subtitle">永远怀念</p>
         </div>
-        <p class="scroll-hint">向下滑動</p>
+        <p class="scroll-hint">向下滑动</p>
     </section>
     
     <!-- 人物简介页 -->
     <section class="page profile-page" id="section1">
         <div class="photo-frame" onclick="openLightboxImg(this)">
-            <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="紀念照片">
+            <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="纪念照片">
         </div>
         <h2 class="profile-name">朱莉莉女士</h2>
-        <p class="profile-dates">【1975】—【2026】</p>
+        <p class="profile-dates">1975年 — 2026年</p>
         <div class="profile-bio">
             一生勤勉，品德高尚。<br>
-            敬業樂群，與人為善。<br>
-            您的精神永遠激勵我們前行。
+            敬业乐群，与人为善。<br>
+            您的精神永远激励我们前行。
         </div>
     </section>
     
     <!-- 相册页 -->
     <section class="page gallery-page" id="section2">
-        <h2 class="section-title">美好回憶</h2>
+        <h2 class="section-title">回忆墙</h2>
         <div class="gallery-grid">
             <div class="gallery-item" onclick="openLightboxImg(this)">
                 <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片1">
@@ -678,74 +508,36 @@
         </div>
     </section>
     
-    <!-- 讣告页 -->
-    <section class="page obituary-page" id="section3">
-        <div class="obituary-container">
-            <h2 class="obituary-title">悼 念 詞</h2>
-            <div class="obituary-content">
-                尊敬的主管/同事：<br><br>
-                我們懷著無比沈痛的心情向各位告知，我們的好同事好朋友<strong>朱莉莉女士</strong>於2026年03月04日在臺北離世。
-            </div>
-            <div class="obituary-signature">
-                【治喪委員會/家屬】<br>
-                【日期】
-            </div>
-        </div>
-    </section>
-    
     <!-- 悼念互动页 -->
-    <section class="page memorial-page" id="section4">
-        <h2 class="section-title">寄託哀思</h2>
+    <section class="page memorial-page" id="section3">
+        <h2 class="section-title">追思寄托</h2>
         <div class="memorial-actions">
             <div class="action-btn" onclick="offerFlower()">
                 <div class="action-icon">💐</div>
-                <span class="action-text">獻花</span>
-                <span class="counter" id="flowerCount">已有 0 人獻花</span>
+                <span class="action-text">献花</span>
+                <span class="counter" id="flowerCount">已有 0 人献花</span>
             </div>
             <div class="action-btn" onclick="lightCandle()">
                 <div class="action-icon" id="candleIcon">🕯️</div>
-                <span class="action-text">點燭</span>
-                <span class="counter" id="candleCount">已有 0 人點燭</span>
+                <span class="action-text">点烛</span>
+                <span class="counter" id="candleCount">已有 0 人点烛</span>
             </div>
         </div>
     </section>
     
     <!-- 留言页 -->
-    <section class="page message-page" id="section5">
+    <section class="page message-page" id="section4">
         <div class="message-container">
-            <h2 class="section-title">留言追思</h2>
-            <form id="messageForm" onsubmit="submitMessage(event)">
-                <div class="form-group">
-                    <label class="form-label">您的姓名</label>
-                    <input type="text" class="form-input" id="msgName" placeholder="請輸入姓名" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">追思留言</label>
-                    <textarea class="form-textarea" id="msgContent" placeholder="寫下您的思念..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">提交留言</button>
-            </form>
-            
-            <!-- 留言展示区 -->
-            <div class="messages-list" id="messagesList">
-                <p class="messages-list-title">— 留言記錄 —</p>
-                <div class="message-item">
-                    <div class="message-item-name">candy</div>
-                    <div class="message-item-content">永遠懷念您，願您在天堂安好。</div>
-                    <div class="message-item-time">2026年4月8日</div>
-                </div>
-                <div class="message-item">
-                    <div class="message-item-name">Sunny</div>
-                    <div class="message-item-content">思念无尽，永存心间。</div>
-                    <div class="message-item-time">2026年4月8日</div>
-                </div>
-            </div>
+            <h2 class="section-title">留言•念想寄存处</h2>
+            <!-- 来必力评论插件 -->
+            <livere-comment client-id="Bc6yjWNCdr8uIIdgfBw@"></livere-comment>
+            <script type="module" src="https://www.livere.org/livere-widget.js"></script>
         </div>
     </section>
     
     <!-- 页脚 -->
     <footer class="footer">
-        <p>紀念我們的至愛 · 我們將永遠懷念她</p>
+        <p>纪念我们的至爱 · 我们将永远怀念她</p>
     </footer>
     
     <!-- 灯箱 -->
@@ -753,9 +545,6 @@
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightboxImg" src="" alt="">
     </div>
-    
-    <!-- 提示框 -->
-    <div class="toast" id="toast">留言提交成功</div>
 
     <script>
         // 初始化计数
@@ -791,7 +580,7 @@
         // 献花功能
         function offerFlower() {
             flowerCount++;
-            document.getElementById('flowerCount').textContent = '已有 ' + flowerCount + ' 人獻花';
+            document.getElementById('flowerCount').textContent = '已有 ' + flowerCount + ' 人献花';
             
             const flowers = ['🌸', '🌺', '🌹', '🌷', '💐', '🌼'];
             for (let i = 0; i < 15; i++) {
@@ -811,7 +600,7 @@
         // 点烛功能
         function lightCandle() {
             candleCount++;
-            document.getElementById('candleCount').textContent = '已有 ' + candleCount + ' 人點燭';
+            document.getElementById('candleCount').textContent = '已有 ' + candleCount + ' 人点烛';
             
             const candleIcon = document.getElementById('candleIcon');
             candleIcon.classList.add('candle-lit');
@@ -842,55 +631,6 @@
                 closeLightbox();
             }
         });
-        
-        // 提交留言
-        function submitMessage(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('msgName').value;
-            const content = document.getElementById('msgContent').value;
-            
-            const messagesList = document.getElementById('messagesList');
-            const messageItem = document.createElement('div');
-            messageItem.className = 'message-item';
-            
-            const now = new Date();
-            const dateStr = now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
-            
-            messageItem.innerHTML = `
-                <div class="message-item-name">${escapeHtml(name)}</div>
-                <div class="message-item-content">${escapeHtml(content)}</div>
-                <div class="message-item-time">${dateStr}</div>
-            `;
-            
-            const firstMessage = messagesList.querySelector('.message-item');
-            if (firstMessage) {
-                messagesList.insertBefore(messageItem, firstMessage);
-            } else {
-                messagesList.appendChild(messageItem);
-            }
-            
-            showToast('留言提交成功，感謝您的追思');
-            
-            document.getElementById('msgName').value = '';
-            document.getElementById('msgContent').value = '';
-        }
-        
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.style.display = 'block';
-            
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 2500);
-        }
-        
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
     </script>
 </body>
 </html>
