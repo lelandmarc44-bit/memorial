@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title> 深切缅怀 - 朱莉莉 </title>
+    <title>深切缅怀 - 朱莉莉</title>
     <style>
         * {
             margin: 0;
@@ -71,11 +71,11 @@
         .cover-title {
             font-size: 38px;
             letter-spacing: 10px;
-            color: #7a9b57;
+            color: #4a4a4a;
             font-weight: 600;
             margin-bottom: 15px;
             animation: fadeInDown 1.5s ease;
-            text-shadow: 0 2px 20px rgba(122, 155, 87, 0.15);
+            text-shadow: 0 2px 20px rgba(74, 74, 74, 0.15);
         }
         
         .cover-name {
@@ -130,7 +130,7 @@
         
         .scroll-hint {
             position: absolute;
-            bottom: 30px;
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
             color: #b8b8b8;
@@ -627,26 +627,37 @@
             transform: scale(1.3);
         }
         
-        /* Twikoo样式：隐藏所有输入表单，只显示评论列表 - 兼容微信/Safari */
+        /* Twikoo样式：完全隐藏原生表单，只显示评论列表 */
+        #tcomment { margin-top: 0 !important; }
+        
+        /* 强制隐藏所有Twikoo表单元素 */
+        #tcomment form,
         #tcomment .tk-input,
         #tcomment .tk-input-container,
-        #tcomment .tk-row,
         #tcomment .tk-meta-input,
-        #tcomment form,
+        #tcomment .tk-row,
         #tcomment .tk-footer,
         #tcomment .tk-submit,
         #tcomment .tk-toolbar,
         #tcomment .tk-actions,
+        #tcomment .tk-admin,
+        #tcomment .tk-main,
+        #tcomment .tk-preview,
+        #tcomment .tk-owo-emotion,
         #tcomment textarea,
         #tcomment input[type="text"],
         #tcomment input[type="email"],
         #tcomment input[type="url"],
         #tcomment .tk-meta,
-        #tcomment .tk-user { display: none !important; }
+        #tcomment .tk-user,
+        #tcomment .tk-avatar,
+        #tcomment .tk-extras,
+        #tcomment button:not(.tk-comment button) { display: none !important; }
         
+        /* 只显示评论列表 */
         #tcomment .tk-comments { 
-            margin-top: 20px !important; 
-            display: block !important;
+            display: block !important; 
+            margin-top: 20px !important;
         }
         
         #tcomment .tk-comment { 
@@ -716,7 +727,7 @@
     <!-- 人物简介页 -->
     <section class="page profile-page" id="section1">
         <div class="photo-frame" onclick="openLightboxImg(this)">
-            <img src="photo 1.jpg" alt="纪念照片">
+            <img src="photo 1.jpg" alt="纪念照片" loading="lazy">
         </div>
         <h2 class="profile-name">朱莉莉</h2>
         <p class="profile-dates">1975年 — 2026年</p>
@@ -731,24 +742,24 @@
     <section class="page gallery-page" id="section2">
         <h2 class="section-title">回忆墙</h2>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 2.jpg" alt="照片1"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 3.jpg" alt="照片2"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 4.jpg" alt="照片3"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 5.jpg" alt="照片4"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 6.jpg" alt="照片5"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 7.jpg" alt="照片6"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 8.jpg" alt="照片7"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 9.jpg" alt="照片8"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 10.jpg" alt="照片9"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 11.jpg" alt="照片10"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 12.jpg" alt="照片11"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 13.jpg" alt="照片12"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 14.jpg" alt="照片13"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 15.jpg" alt="照片14"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 16.jpg" alt="照片15"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 17.jpg" alt="照片16"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 18.jpg" alt="照片17"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 19.jpg" alt="照片18"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 2.jpg" alt="照片1" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 3.jpg" alt="照片2" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 4.jpg" alt="照片3" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 5.jpg" alt="照片4" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 6.jpg" alt="照片5" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 7.jpg" alt="照片6" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 8.jpg" alt="照片7" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 9.jpg" alt="照片8" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 10.jpg" alt="照片9" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 11.jpg" alt="照片10" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 12.jpg" alt="照片11" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 13.jpg" alt="照片12" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 14.jpg" alt="照片13" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 15.jpg" alt="照片14" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 16.jpg" alt="照片15" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 17.jpg" alt="照片16" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 18.jpg" alt="照片17" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 19.jpg" alt="照片18" loading="lazy"></div>
         </div>
     </section>
     
@@ -874,7 +885,7 @@
         // 从Twikoo加载献花和点烛统计数据
         async function loadStatistics() {
             try {
-                const response = await fetch('https://twikoo-vercel-theta-nine.vercel.app', {
+                const response = await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -953,7 +964,7 @@
             }
             
             try {
-                await fetch('https://twikoo-vercel-theta-nine.vercel.app', {
+                await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -987,7 +998,7 @@
             }, 3000);
             
             try {
-                await fetch('https://twikoo-vercel-theta-nine.vercel.app', {
+                await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -1112,7 +1123,7 @@
                     });
                 }
                 
-                const response = await fetch('https://twikoo-vercel-theta-nine.vercel.app', {
+                const response = await fetch('https://twikoo-vercel-theta-nine.vercel.app/api/comment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
