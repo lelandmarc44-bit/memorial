@@ -91,39 +91,24 @@
         .cover-dates { font-size: 14px; color: #999; letter-spacing: 3px; margin-top: 20px; }
         .cover-line { width: 1px; height: 40px; background: linear-gradient(180deg, #8b6b4a, transparent); margin: 20px auto; }
         .cover-subtitle { font-size: 13px; color: #666; letter-spacing: 6px; }
-        .scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: #555; font-size: 11px; letter-spacing: 2px; animation: bounce 2s infinite; }
+        .scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: #555; font-size: 11px; animation: bounce 2s infinite; }
         
         .profile-page { background: linear-gradient(180deg, #2a3a4a 0%, #1e2d3a 100%); }
-        
-        .photo-frame {
-            width: 140px; height: 175px;
-            background: linear-gradient(145deg, #3a4a5a, #2a3a4a);
-            border: 2px solid #4a5a6a;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            cursor: pointer;
-        }
+        .photo-frame { width: 140px; height: 175px; background: linear-gradient(145deg, #3a4a5a, #2a3a4a); border: 2px solid #4a5a6a; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); overflow: hidden; cursor: pointer; }
         .photo-frame:hover { border-color: #8b6b4a; }
         .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .profile-name { font-size: 24px; color: #d4c4a8; letter-spacing: 5px; margin-bottom: 10px; font-weight: 400; }
+        .profile-name { font-size: 24px; color: #d4c4a8; letter-spacing: 5px; margin-bottom: 10px; }
         .profile-dates { font-size: 13px; color: #777; letter-spacing: 2px; margin-bottom: 15px; }
-        .profile-bio { max-width: 300px; text-align: center; line-height: 2; font-size: 14px; color: #aaa; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 2px; border-left: 2px solid #8b6b4a; }
+        .profile-bio { max-width: 300px; text-align: center; line-height: 2; font-size: 14px; color: #aaa; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 2px; border-left: 2px solid #8b6b4a; }
         
-        .gallery-page { background: #1e2d3a; min-height: auto; padding: 45px 20px; }
+        .gallery-page { background: #1e2d3a; padding: 45px 20px; }
         .section-title { font-size: 18px; color: #d4c4a8; text-align: center; margin-bottom: 25px; letter-spacing: 6px; font-weight: 300; }
-        
         .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 360px; width: 100%; }
         .gallery-item { aspect-ratio: 1; background: #2a3a4a; border-radius: 2px; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; transition: all 0.3s; }
-        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); }
+        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         
-        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); display: none; align-items: center; justify-content: center; z-index: 2000; }
+        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 2000; }
         .lightbox.active { display: flex; }
         .lightbox-content { max-width: 95%; max-height: 95%; border-radius: 4px; }
         .lightbox-close { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 36px; cursor: pointer; opacity: 0.6; z-index: 2001; }
@@ -132,27 +117,44 @@
         .memorial-actions { display: flex; gap: 40px; margin-bottom: 15px; }
         .action-btn { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.3s; }
         .action-btn:active { transform: scale(0.95); }
-        .action-icon { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 12px; transition: all 0.3s; background: rgba(255, 255, 255, 0.03); border: 1px solid #3a4a5a; }
-        .action-btn:hover .action-icon { border-color: #8b6b4a; box-shadow: 0 0 25px rgba(139, 107, 74, 0.2); }
+        .action-icon { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 12px; background: rgba(255,255,255,0.03); border: 1px solid #3a4a5a; }
+        .action-btn:hover .action-icon { border-color: #8b6b4a; box-shadow: 0 0 25px rgba(139,107,74,0.2); }
         .action-text { font-size: 13px; color: #888; letter-spacing: 2px; }
         .counter { font-size: 10px; color: #555; margin-top: 4px; }
         
-        .flower-particle { position: fixed; font-size: 22px; pointer-events: none; animation: flowerFall 4s ease-out forwards; z-index: 1000; filter: grayscale(40%) sepia(30%); }
+        .flower-particle { position: fixed; font-size: 22px; pointer-events: none; animation: flowerFall 4s ease-out forwards; z-index: 1000; }
         @keyframes flowerFall { 0% { opacity: 0.8; transform: translateY(-50px) rotate(0deg); } 100% { opacity: 0; transform: translateY(100vh) rotate(720deg); } }
-        
         .candle-lit { animation: flicker 0.5s ease-in-out infinite alternate; }
-        @keyframes flicker { 0% { filter: brightness(1) drop-shadow(0 0 10px rgba(255, 180, 100, 0.5)); } 100% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 180, 100, 0.8)); } }
+        @keyframes flicker { 0% { filter: brightness(1) drop-shadow(0 0 10px rgba(255,180,100,0.5)); } 100% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(255,180,100,0.8)); } }
         
-        .message-page { background: linear-gradient(180deg, #2a3a4a 0%, #1a2634 100%); min-height: auto; padding: 45px 20px; }
+        .message-page { background: linear-gradient(180deg, #2a3a4a 0%, #1a2634 100%); padding: 45px 20px; }
         .message-container { width: 100%; max-width: 360px; }
         
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-8px); } 60% { transform: translateX(-50%) translateY(-4px); } }
+        
+        .nav-dots { position: fixed; right: 15px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100; }
+        .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: #3a4a5a; cursor: pointer; }
+        .nav-dot:hover, .nav-dot.active { background: #8b6b4a; }
+        .nav-dot.active { transform: scale(1.3); }
+        
+        /* Twikoo：隐藏输入表单，只显示评论列表 */
+        #tcomment .tk-input-container, #tcomment .tk-input, #tcomment .tk-row, #tcomment form, #tcomment .tk-footer { display: none !important; }
+        #tcomment .tk-comments { margin-top: 20px; }
+        #tcomment .tk-comment { background: rgba(255,255,255,0.02); border-left: 2px solid #8b6b4a; padding: 12px 15px; margin-bottom: 12px; border-radius: 0 4px 4px 0; }
+        #tcomment .tk-nick { color: #d4c4a8; font-size: 13px; }
+        #tcomment .tk-content { color: #aaa; font-size: 13px; line-height: 1.7; }
+        #tcomment .tk-content img { max-width: 100%; border-radius: 4px; margin-top: 8px; }
+        #tcomment .tk-time { color: #555; font-size: 11px; }
+        #tcomment .tk-avatar, #tcomment .tk-extras { display: none !important; }
+        
+        /* 自定义留言输入 */
         .msg-input-area { width: 100%; }
-        .msg-textarea { width: 100%; min-height: 100px; padding: 15px; background: rgba(255, 255, 255, 0.03); border: 1px solid #3a4a5a; border-radius: 4px; color: #ddd; font-size: 14px; outline: none; resize: none; line-height: 1.6; }
-        .msg-textarea:focus { border-color: #8b6b4a; background: rgba(255, 255, 255, 0.05); }
+        .msg-textarea { width: 100%; min-height: 100px; padding: 15px; background: rgba(255,255,255,0.03); border: 1px solid #3a4a5a; border-radius: 4px; color: #ddd; font-size: 14px; outline: none; resize: none; line-height: 1.6; }
+        .msg-textarea:focus { border-color: #8b6b4a; }
         .msg-textarea::placeholder { color: #666; }
         
         .img-upload-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
-        .img-upload-btn { width: 70px; height: 70px; background: rgba(255, 255, 255, 0.03); border: 1px dashed #3a4a5a; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; position: relative; overflow: hidden; }
+        .img-upload-btn { width: 70px; height: 70px; background: rgba(255,255,255,0.03); border: 1px dashed #3a4a5a; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; position: relative; overflow: hidden; }
         .img-upload-btn:hover { border-color: #8b6b4a; }
         .img-upload-btn input { position: absolute; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
         .img-upload-btn .plus-icon { font-size: 24px; color: #555; }
@@ -165,29 +167,10 @@
         .send-row { display: flex; justify-content: flex-end; margin-top: 15px; }
         .send-btn { padding: 10px 30px; background: #8b6b4a; border: none; border-radius: 4px; color: #fff; font-size: 14px; cursor: pointer; }
         .send-btn:hover { background: #9b7b5a; }
+        .send-btn:disabled { background: #555; cursor: not-allowed; }
         
-        .toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(26, 38, 52, 0.98); color: #d4c4a8; padding: 18px 30px; border-radius: 4px; font-size: 14px; z-index: 2000; display: none; border: 1px solid #3a4a5a; }
-        
-        .messages-list { margin-top: 30px; width: 100%; }
-        .messages-list-title { font-size: 12px; color: #666; text-align: center; margin-bottom: 18px; letter-spacing: 3px; }
-        
-        .footer { text-align: center; padding: 30px 20px; color: #4a5a6a; font-size: 11px; letter-spacing: 2px; background: #1a2634; border-top: 1px solid #2a3a4a; }
-        
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-8px); } 60% { transform: translateX(-50%) translateY(-4px); } }
-        
-        .nav-dots { position: fixed; right: 15px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100; }
-        .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: #3a4a5a; cursor: pointer; transition: all 0.3s; }
-        .nav-dot:hover, .nav-dot.active { background: #8b6b4a; }
-        .nav-dot.active { transform: scale(1.3); }
-        
-        /* 隐藏Twikoo输入区域 */
-        #tcomment .tk-input, #tcomment .tk-row, #tcomment form, .tk-input-container, .tk-submit { display: none !important; }
-        #tcomment .tk-comments { margin-top: 0; }
-        #tcomment .tk-comment { background: rgba(255, 255, 255, 0.02); border-left: 2px solid #8b6b4a; padding: 12px 15px; margin-bottom: 12px; border-radius: 0 4px 4px 0; }
-        #tcomment .tk-nick { color: #d4c4a8; font-size: 13px; }
-        #tcomment .tk-content { color: #aaa; font-size: 13px; line-height: 1.7; }
-        #tcomment .tk-time { color: #555; font-size: 11px; }
-        #tcomment .tk-avatar, #tcomment .tk-extras { display: none !important; }
+        .footer { text-align: center; padding: 30px 20px; color: #4a5a6a; font-size: 11px; background: #1a2634; border-top: 1px solid #2a3a4a; }
+        .toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(26,38,52,0.98); color: #d4c4a8; padding: 18px 30px; border-radius: 4px; font-size: 14px; z-index: 2000; display: none; border: 1px solid #3a4a5a; }
     </style>
 </head>
 <body>
@@ -220,24 +203,24 @@
     <section class="page gallery-page" id="section2">
         <h2 class="section-title">回忆墙</h2>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 2.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 3.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 4.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 5.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 6.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 7.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 8.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 9.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 10.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 11.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 12.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 13.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 14.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 15.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 16.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 17.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 18.jpg" alt="照片"></div>
-            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 19.jpg" alt="照片"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 2.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 3.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 4.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 5.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 6.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 7.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 8.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 9.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 10.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 11.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 12.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 13.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 14.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 15.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 16.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 17.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 18.jpg"></div>
+            <div class="gallery-item" onclick="openLightboxImg(this)"><img src="photo 19.jpg"></div>
         </div>
     </section>
     
@@ -273,11 +256,11 @@
                 </div>
                 
                 <div class="send-row">
-                    <button class="send-btn" onclick="sendMessage()">发送</button>
+                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">发送</button>
                 </div>
             </div>
             
-            <div id="tcomment" style="margin-top: 30px;"></div>
+            <div id="tcomment"></div>
             <script src="https://cdn.jsdelivr.net/npm/twikoo@1.7.7/dist/twikoo.min.js"></script>
             <script>
             twikoo.init({
@@ -289,13 +272,11 @@
         </div>
     </section>
     
-    <footer class="footer">
-        <p>纪念我们的至爱 · 我们将永远怀念她</p>
-    </footer>
+    <footer class="footer"><p>纪念我们的至爱 · 我们将永远怀念她</p></footer>
     
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightboxImg" src="" alt="">
+        <img class="lightbox-content" id="lightboxImg" src="">
     </div>
     <div class="toast" id="toast"></div>
 
@@ -305,60 +286,43 @@
         const sections = document.querySelectorAll('section');
         
         navDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                sections[dot.getAttribute('data-section')].scrollIntoView({ behavior: 'smooth' });
-            });
+            dot.addEventListener('click', () => sections[dot.getAttribute('data-section')].scrollIntoView({ behavior: 'smooth' }));
         });
         
         window.addEventListener('scroll', () => {
             let current = 0;
-            sections.forEach((section, index) => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) current = index;
-            });
-            navDots.forEach((dot, index) => { dot.classList.toggle('active', index === current); });
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight/2) current = i; });
+            navDots.forEach((d, i) => d.classList.toggle('active', i === current));
         });
         
         function offerFlower() {
             flowerCount++;
             document.getElementById('flowerCount').textContent = '已有 ' + flowerCount + ' 人献花';
-            const flowers = ['🌸', '🌺', '🌹', '🌷', '💐', '🌼'];
-            for (let i = 0; i < 15; i++) {
+            ['🌸','🌺','🌹','🌷','💐','🌼'].forEach((f, i) => {
                 setTimeout(() => {
-                    const flower = document.createElement('div');
-                    flower.className = 'flower-particle';
-                    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-                    flower.style.left = Math.random() * 100 + '%';
-                    flower.style.top = '-50px';
-                    document.body.appendChild(flower);
-                    setTimeout(() => flower.remove(), 4000);
+                    const el = document.createElement('div');
+                    el.className = 'flower-particle';
+                    el.textContent = f;
+                    el.style.left = Math.random() * 100 + '%';
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), 4000);
                 }, i * 100);
-            }
+            });
         }
         
         function lightCandle() {
             candleCount++;
             document.getElementById('candleCount').textContent = '已有 ' + candleCount + ' 人点烛';
-            const candleIcon = document.getElementById('candleIcon');
-            candleIcon.classList.add('candle-lit');
-            setTimeout(() => candleIcon.classList.remove('candle-lit'), 3000);
+            document.getElementById('candleIcon').classList.add('candle-lit');
+            setTimeout(() => document.getElementById('candleIcon').classList.remove('candle-lit'), 3000);
         }
         
-        function openLightboxImg(element) {
-            const img = element.querySelector('img');
-            if (img) {
-                document.getElementById('lightboxImg').src = img.src;
-                document.getElementById('lightbox').classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
+        function openLightboxImg(el) {
+            const img = el.querySelector('img');
+            if (img) { document.getElementById('lightboxImg').src = img.src; document.getElementById('lightbox').classList.add('active'); }
         }
-        
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
         
         let uploadedImages = [];
         const maxImages = 3;
@@ -367,49 +331,75 @@
             if (uploadedImages.length >= maxImages) { showToast('最多只能上传3张图片'); return; }
             const file = input.files[0];
             if (!file) return;
-            if (!['image/jpeg', 'image/png', 'image/gif'].includes(file.type)) { showToast('请上传 jpg、png 或 gif 格式的图片'); input.value = ''; return; }
-            if (file.size > 5 * 1024 * 1024) { showToast('图片大小不能超过 5MB'); input.value = ''; return; }
+            if (!['image/jpeg','image/png','image/gif'].includes(file.type)) { showToast('请上传 jpg、png 或 gif 格式'); input.value = ''; return; }
+            if (file.size > 5*1024*1024) { showToast('图片大小不能超过 5MB'); input.value = ''; return; }
             const reader = new FileReader();
-            reader.onload = function(e) {
-                uploadedImages.push(e.target.result);
-                renderImagePreviews();
-                input.value = '';
-            };
+            reader.onload = e => { uploadedImages.push(e.target.result); renderImagePreviews(); input.value = ''; };
             reader.readAsDataURL(file);
         }
         
         function renderImagePreviews() {
             const row = document.getElementById('imgUploadRow');
-            const uploadBtn = document.getElementById('uploadBtn');
+            const btn = document.getElementById('uploadBtn');
             row.querySelectorAll('.img-preview-item').forEach(p => p.remove());
-            uploadedImages.forEach((img, index) => {
-                const div = document.createElement('div');
-                div.className = 'img-preview-item';
-                div.innerHTML = `<img src="${img}" alt="预览"><button class="remove-btn" onclick="removeImage(${index})">×</button>`;
-                row.insertBefore(div, uploadBtn);
+            uploadedImages.forEach((img, i) => {
+                const d = document.createElement('div');
+                d.className = 'img-preview-item';
+                d.innerHTML = `<img src="${img}"><button class="remove-btn" onclick="removeImage(${i})">×</button>`;
+                row.insertBefore(d, btn);
             });
-            uploadBtn.style.display = uploadedImages.length >= maxImages ? 'none' : 'flex';
+            btn.style.display = uploadedImages.length >= maxImages ? 'none' : 'flex';
         }
         
-        function removeImage(index) {
-            uploadedImages.splice(index, 1);
-            renderImagePreviews();
-        }
+        function removeImage(i) { uploadedImages.splice(i, 1); renderImagePreviews(); }
         
-        function sendMessage() {
+        async function sendMessage() {
             const content = document.getElementById('msgContent').value.trim();
             if (!content && uploadedImages.length === 0) { showToast('请输入留言内容或上传图片'); return; }
-            showToast('留言已发送，感谢您的追思');
-            document.getElementById('msgContent').value = '';
-            uploadedImages = [];
-            renderImagePreviews();
+            
+            const btn = document.getElementById('sendBtn');
+            btn.disabled = true;
+            btn.textContent = '发送中...';
+            
+            try {
+                let fullContent = content;
+                uploadedImages.forEach((img, i) => { fullContent += `\n\n![图片${i+1}](${img})`; });
+                
+                const res = await fetch('https://twikoo-vercel-theta-nine.vercel.app', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        event: 'COMMENT_SUBMIT',
+                        comment: { nick: '匿名用户', mail: '', link: '', url: '/', href: location.href, content: fullContent }
+                    })
+                });
+                
+                const result = await res.json();
+                console.log('Twikoo response:', result);
+                
+                if (result.code === 0 || result.result) {
+                    showToast('留言已发送，感谢您的追思');
+                    document.getElementById('msgContent').value = '';
+                    uploadedImages = [];
+                    renderImagePreviews();
+                    setTimeout(() => twikoo.init({ envId: 'https://twikoo-vercel-theta-nine.vercel.app', el: '#tcomment', lang: 'zh-CN' }), 1000);
+                } else {
+                    showToast(result.message || '发送失败');
+                }
+            } catch (e) {
+                console.error(e);
+                showToast('发送失败，请检查网络');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '发送';
+            }
         }
         
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 2500);
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.style.display = 'block';
+            setTimeout(() => t.style.display = 'none', 2500);
         }
     </script>
 </body>
