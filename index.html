@@ -792,12 +792,15 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         event: 'COMMENT_GET',
-                        collection: 'comment'
+                        url: '/'
                     })
                 });
                 
                 const result = await response.json();
                 console.log('获取统计数据:', result);
+                
+                flowerCount = 0;
+                candleCount = 0;
                 
                 if (result.data && result.data.length > 0) {
                     result.data.forEach(function(comment) {
