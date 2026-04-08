@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>深切缅怀 - 朱莉莉女士</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Serif SC', serif;
@@ -27,22 +23,22 @@
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
+            background: linear-gradient(180deg, rgba(26, 38, 52, 0.4) 0%, rgba(26, 38, 52, 0.92) 60%, #1a2634 100%);
             overflow: hidden;
         }
         
         .hero-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 55%;
             background-image: url('https://s.coze.cn/image/LOLznq6_K7A/');
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
-            filter: brightness(0.8) saturate(0.9);
-            opacity: 0.5;
+            filter: brightness(0.9) saturate(0.95);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%);
         }
         
         .page {
@@ -59,7 +55,7 @@
             text-align: center;
             position: relative;
             z-index: 10;
-            margin-top: -80px;
+            margin-top: -130px;
         }
         
         .cover-title {
@@ -68,7 +64,6 @@
             color: #d4c4a8;
             font-weight: 600;
             margin-bottom: 15px;
-            animation: fadeInDown 1.5s ease;
             text-shadow: 0 2px 20px rgba(0,0,0,0.5);
         }
         
@@ -82,8 +77,7 @@
             display: inline-block;
         }
         
-        .cover-name::before,
-        .cover-name::after {
+        .cover-name::before, .cover-name::after {
             content: '';
             position: absolute;
             top: 50%;
@@ -91,55 +85,18 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, #8b6b4a, transparent);
         }
+        .cover-name::before { right: 100%; margin-right: 20px; }
+        .cover-name::after { left: 100%; margin-left: 20px; }
         
-        .cover-name::before {
-            right: 100%;
-            margin-right: 20px;
-        }
+        .cover-dates { font-size: 14px; color: #999; letter-spacing: 3px; margin-top: 20px; }
+        .cover-line { width: 1px; height: 40px; background: linear-gradient(180deg, #8b6b4a, transparent); margin: 20px auto; }
+        .cover-subtitle { font-size: 13px; color: #666; letter-spacing: 6px; }
+        .scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: #555; font-size: 11px; letter-spacing: 2px; animation: bounce 2s infinite; }
         
-        .cover-name::after {
-            left: 100%;
-            margin-left: 20px;
-        }
-        
-        .cover-dates {
-            font-size: 14px;
-            color: #999;
-            letter-spacing: 3px;
-            margin-top: 20px;
-        }
-        
-        .cover-line {
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(180deg, #8b6b4a, transparent);
-            margin: 20px auto;
-        }
-        
-        .cover-subtitle {
-            font-size: 13px;
-            color: #666;
-            letter-spacing: 6px;
-        }
-        
-        .scroll-hint {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #555;
-            font-size: 11px;
-            letter-spacing: 2px;
-            animation: bounce 2s infinite;
-        }
-        
-        .profile-page {
-            background: linear-gradient(180deg, #2a3a4a 0%, #1e2d3a 100%);
-        }
+        .profile-page { background: linear-gradient(180deg, #2a3a4a 0%, #1e2d3a 100%); }
         
         .photo-frame {
-            width: 140px;
-            height: 175px;
+            width: 140px; height: 175px;
             background: linear-gradient(145deg, #3a4a5a, #2a3a4a);
             border: 2px solid #4a5a6a;
             border-radius: 4px;
@@ -148,291 +105,78 @@
             justify-content: center;
             margin-bottom: 20px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            position: relative;
             overflow: hidden;
             cursor: pointer;
         }
+        .photo-frame:hover { border-color: #8b6b4a; }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
         
-        .photo-frame:hover {
-            border-color: #8b6b4a;
-        }
+        .profile-name { font-size: 24px; color: #d4c4a8; letter-spacing: 5px; margin-bottom: 10px; font-weight: 400; }
+        .profile-dates { font-size: 13px; color: #777; letter-spacing: 2px; margin-bottom: 15px; }
+        .profile-bio { max-width: 300px; text-align: center; line-height: 2; font-size: 14px; color: #aaa; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 2px; border-left: 2px solid #8b6b4a; }
         
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .gallery-page { background: #1e2d3a; min-height: auto; padding: 45px 20px; }
+        .section-title { font-size: 18px; color: #d4c4a8; text-align: center; margin-bottom: 25px; letter-spacing: 6px; font-weight: 300; }
         
-        .profile-name {
-            font-size: 24px;
-            color: #d4c4a8;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 360px; width: 100%; }
+        .gallery-item { aspect-ratio: 1; background: #2a3a4a; border-radius: 2px; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; transition: all 0.3s; }
+        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         
-        .profile-dates {
-            font-size: 13px;
-            color: #777;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
+        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); display: none; align-items: center; justify-content: center; z-index: 2000; }
+        .lightbox.active { display: flex; }
+        .lightbox-content { max-width: 95%; max-height: 95%; border-radius: 4px; }
+        .lightbox-close { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 36px; cursor: pointer; opacity: 0.6; z-index: 2001; }
         
-        .profile-bio {
-            max-width: 300px;
-            text-align: center;
-            line-height: 2;
-            font-size: 14px;
-            color: #aaa;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 2px;
-            border-left: 2px solid #8b6b4a;
-        }
+        .memorial-page { background: #2a3a4a; }
+        .memorial-actions { display: flex; gap: 40px; margin-bottom: 15px; }
+        .action-btn { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.3s; }
+        .action-btn:active { transform: scale(0.95); }
+        .action-icon { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 12px; transition: all 0.3s; background: rgba(255, 255, 255, 0.03); border: 1px solid #3a4a5a; }
+        .action-btn:hover .action-icon { border-color: #8b6b4a; box-shadow: 0 0 25px rgba(139, 107, 74, 0.2); }
+        .action-text { font-size: 13px; color: #888; letter-spacing: 2px; }
+        .counter { font-size: 10px; color: #555; margin-top: 4px; }
         
-        .gallery-page {
-            background: #1e2d3a;
-            min-height: auto;
-            padding: 45px 20px;
-        }
+        .flower-particle { position: fixed; font-size: 22px; pointer-events: none; animation: flowerFall 4s ease-out forwards; z-index: 1000; filter: grayscale(40%) sepia(30%); }
+        @keyframes flowerFall { 0% { opacity: 0.8; transform: translateY(-50px) rotate(0deg); } 100% { opacity: 0; transform: translateY(100vh) rotate(720deg); } }
         
-        .section-title {
-            font-size: 18px;
-            color: #d4c4a8;
-            text-align: center;
-            margin-bottom: 25px;
-            letter-spacing: 6px;
-            font-weight: 300;
-        }
+        .candle-lit { animation: flicker 0.5s ease-in-out infinite alternate; }
+        @keyframes flicker { 0% { filter: brightness(1) drop-shadow(0 0 10px rgba(255, 180, 100, 0.5)); } 100% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 180, 100, 0.8)); } }
         
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            max-width: 360px;
-            width: 100%;
-        }
+        .message-page { background: linear-gradient(180deg, #2a3a4a 0%, #1a2634 100%); min-height: auto; padding: 45px 20px; }
+        .message-container { width: 100%; max-width: 360px; }
         
-        .gallery-item {
-            aspect-ratio: 1;
-            background: #2a3a4a;
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+        .msg-hint { font-size: 11px; color: #666; text-align: center; margin-bottom: 15px; }
         
-        .gallery-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
+        .footer { text-align: center; padding: 30px 20px; color: #4a5a6a; font-size: 11px; letter-spacing: 2px; background: #1a2634; border-top: 1px solid #2a3a4a; }
         
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-8px); } 60% { transform: translateX(-50%) translateY(-4px); } }
         
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-        }
+        .nav-dots { position: fixed; right: 15px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100; }
+        .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: #3a4a5a; cursor: pointer; transition: all 0.3s; }
+        .nav-dot:hover, .nav-dot.active { background: #8b6b4a; }
+        .nav-dot.active { transform: scale(1.3); }
         
-        .lightbox.active {
-            display: flex;
-        }
+        /* Twikoo样式：简化界面 */
+        #tcomment .tk-avatar { display: none !important; }
+        #tcomment .tk-meta-input:nth-child(2),
+        #tcomment .tk-meta-input:nth-child(3) { display: none !important; }
         
-        .lightbox-content {
-            max-width: 95%;
-            max-height: 95%;
-            border-radius: 4px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-        }
+        #tcomment .tk-input { background: rgba(255,255,255,0.03) !important; border-color: #3a4a5a !important; border-radius: 4px !important; color: #ddd !important; }
+        #tcomment .tk-input:focus { border-color: #8b6b4a !important; }
+        #tcomment .tk-textarea { background: rgba(255,255,255,0.03) !important; border-color: #3a4a5a !important; border-radius: 4px !important; color: #ddd !important; min-height: 100px !important; }
+        #tcomment .tk-textarea:focus { border-color: #8b6b4a !important; }
         
-        .lightbox-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: #fff;
-            font-size: 36px;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.3s;
-            z-index: 2001;
-        }
+        #tcomment .tk-preview-btn,
+        #tcomment .tk-send-btn { background: #8b6b4a !important; border: none !important; border-radius: 4px !important; color: #fff !important; padding: 8px 20px !important; }
+        #tcomment .tk-send-btn:hover { background: #9b7b5a !important; }
         
-        .lightbox-close:hover {
-            opacity: 1;
-        }
-        
-        .memorial-page {
-            background: #2a3a4a;
-        }
-        
-        .memorial-actions {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 15px;
-        }
-        
-        .action-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .action-btn:active {
-            transform: scale(0.95);
-        }
-        
-        .action-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin-bottom: 12px;
-            transition: all 0.3s;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid #3a4a5a;
-        }
-        
-        .action-btn:hover .action-icon {
-            border-color: #8b6b4a;
-            box-shadow: 0 0 25px rgba(139, 107, 74, 0.2);
-        }
-        
-        .action-text {
-            font-size: 13px;
-            color: #888;
-            letter-spacing: 2px;
-        }
-        
-        .counter {
-            font-size: 10px;
-            color: #555;
-            margin-top: 4px;
-        }
-        
-        .flower-particle {
-            position: fixed;
-            font-size: 22px;
-            pointer-events: none;
-            animation: flowerFall 4s ease-out forwards;
-            z-index: 1000;
-            filter: grayscale(40%) sepia(30%);
-        }
-        
-        @keyframes flowerFall {
-            0% {
-                opacity: 0.8;
-                transform: translateY(-50px) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(100vh) rotate(720deg);
-            }
-        }
-        
-        .candle-lit {
-            animation: flicker 0.5s ease-in-out infinite alternate;
-        }
-        
-        @keyframes flicker {
-            0% { filter: brightness(1) drop-shadow(0 0 10px rgba(255, 180, 100, 0.5)); }
-            100% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 180, 100, 0.8)); }
-        }
-        
-        .message-page {
-            background: linear-gradient(180deg, #2a3a4a 0%, #1a2634 100%);
-            min-height: auto;
-            padding: 45px 20px;
-        }
-        
-        .message-container {
-            width: 100%;
-            max-width: 360px;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #4a5a6a;
-            font-size: 11px;
-            letter-spacing: 2px;
-            background: #1a2634;
-            border-top: 1px solid #2a3a4a;
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-8px); }
-            60% { transform: translateX(-50%) translateY(-4px); }
-        }
-        
-        .nav-dots {
-            position: fixed;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 100;
-        }
-        
-        .nav-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #3a4a5a;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .nav-dot:hover,
-        .nav-dot.active {
-            background: #8b6b4a;
-        }
-        
-        .nav-dot.active {
-            transform: scale(1.3);
-        }
-        
-        #tcomment .tk-row-inputs .tk-input-group:nth-child(2),
-        #tcomment .tk-row-inputs .tk-input-group:nth-child(3),
-        .tk-row-inputs .tk-input-group:nth-child(2),
-        .tk-row-inputs .tk-input-group:nth-child(3),
-        #twikoo .tk-meta-input:nth-child(2),
-        #twikoo .tk-meta-input:nth-child(3) {
-            display: none !important;
-        }
+        #tcomment .tk-comments { margin-top: 20px; }
+        #tcomment .tk-comment { background: rgba(255,255,255,0.02); border-left: 2px solid #8b6b4a; padding: 12px 15px; margin-bottom: 12px; border-radius: 0 4px 4px 0; }
+        #tcomment .tk-nick { color: #d4c4a8; font-size: 13px; }
+        #tcomment .tk-content { color: #aaa; font-size: 13px; line-height: 1.7; }
+        #tcomment .tk-time { color: #555; font-size: 11px; }
+        #tcomment .tk-extras { display: none !important; }
     </style>
 </head>
 <body>
@@ -456,16 +200,10 @@
     </section>
     
     <section class="page profile-page" id="section1">
-        <div class="photo-frame" onclick="openLightboxImg(this)">
-            <img src="photo 1.jpg" alt="纪念照片">
-        </div>
+        <div class="photo-frame" onclick="openLightboxImg(this)"><img src="photo 1.jpg" alt="纪念照片"></div>
         <h2 class="profile-name">朱莉莉女士</h2>
         <p class="profile-dates">1975年 — 2026年</p>
-        <div class="profile-bio">
-            一生勤勉，品德高尚。<br>
-            敬业乐群，与人为善。<br>
-            您的精神永远激励我们前行。
-        </div>
+        <div class="profile-bio">一生勤勉，品德高尚。<br>敬业乐群，与人为善。<br>您的精神永远激励我们前行。</div>
     </section>
     
     <section class="page gallery-page" id="section2">
@@ -511,7 +249,8 @@
     <section class="page message-page" id="section4">
         <div class="message-container">
             <h2 class="section-title">留言•念想寄存处</h2>
-            <p style="font-size: 11px; color: #666; text-align: center; margin-bottom: 10px;">可上传图片 · 可匿名留言</p>
+            <p class="msg-hint">可直接粘贴或拖拽图片到输入框 · 支持匿名留言</p>
+            
             <div id="tcomment"></div>
             <script src="https://cdn.jsdelivr.net/npm/twikoo@1.7.7/dist/twikoo.min.js"></script>
             <script>
@@ -532,18 +271,16 @@
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightboxImg" src="" alt="">
     </div>
+    <div class="toast" id="toast"></div>
 
     <script>
-        let flowerCount = 0;
-        let candleCount = 0;
-        
+        let flowerCount = 0, candleCount = 0;
         const navDots = document.querySelectorAll('.nav-dot');
         const sections = document.querySelectorAll('section');
         
         navDots.forEach(dot => {
             dot.addEventListener('click', () => {
-                const sectionIndex = dot.getAttribute('data-section');
-                sections[sectionIndex].scrollIntoView({ behavior: 'smooth' });
+                sections[dot.getAttribute('data-section')].scrollIntoView({ behavior: 'smooth' });
             });
         });
         
@@ -551,13 +288,9 @@
             let current = 0;
             sections.forEach((section, index) => {
                 const rect = section.getBoundingClientRect();
-                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                    current = index;
-                }
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) current = index;
             });
-            navDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === current);
-            });
+            navDots.forEach((dot, index) => { dot.classList.toggle('active', index === current); });
         });
         
         function offerFlower() {
@@ -570,7 +303,6 @@
                     flower.className = 'flower-particle';
                     flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
                     flower.style.left = Math.random() * 100 + '%';
-                    flower.style.top = '-50px';
                     document.body.appendChild(flower);
                     setTimeout(() => flower.remove(), 4000);
                 }, i * 100);
@@ -599,9 +331,14 @@
             document.body.style.overflow = '';
         }
         
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
-        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 2500);
+        }
     </script>
 </body>
 </html>
