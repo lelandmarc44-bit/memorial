@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>深切緬懷 - 朱莉莉女士</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Serif SC', serif;
+            background: linear-gradient(180deg, #1a2634 0%, #2a3a4a 100%);
+            color: #e8e8e8;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* ========== 顶部花束背景 ========== */
+        .hero-section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, rgba(26, 38, 52, 0.4) 0%, rgba(26, 38, 52, 0.92) 60%, #1a2634 100%);
+            overflow: hidden;
+        }
+        
+        /* 实拍花束背景图 */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 65%;
+            background-image: url('https://s.coze.cn/image/LOLznq6_K7A/');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            filter: brightness(0.85) saturate(0.95);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 100%);
+        }
+        
+        /* 页面容器 */
+        .page {
+            min-height: 100vh;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        /* ========== 封面页 ========== */
+        .cover-content {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            margin-top: 80px;
+        }
+        
+        .cover-title {
+            font-size: 42px;
+            letter-spacing: 12px;
+            color: #d4c4a8;
+            font-weight: 300;
+            margin-bottom: 20px;
+            animation: fadeInDown 1.5s ease;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+        
+        .cover-name {
+            font-size: 36px;
+            letter-spacing: 8px;
+            color: #fff;
+            font-weight: 400;
+            margin: 30px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .cover-name::before,
+        .cover-name::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #8b6b4a, transparent);
+        }
+        
+        .cover-name::before {
+            right: 100%;
+            margin-right: 25px;
+        }
+        
+        .cover-name::after {
+            left: 100%;
+            margin-left: 25px;
+        }
+        
+        .cover-dates {
+            font-size: 16px;
+            color: #999;
+            letter-spacing: 4px;
+            margin-top: 30px;
+        }
+        
+        .cover-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(180deg, #8b6b4a, transparent);
+            margin: 40px auto;
+        }
+        
+        .cover-subtitle {
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 8px;
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 3px;
+            animation: bounce 2s infinite;
+        }
+        
+        /* ========== 人物简介页 ========== */
+        .profile-page {
+            background: linear-gradient(180deg, #2a3a4a 0%, #1e2d3a 100%);
+        }
+        
+        .photo-frame {
+            width: 160px;
+            height: 200px;
+            background: linear-gradient(145deg, #3a4a5a, #2a3a4a);
+            border: 2px solid #4a5a6a;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .photo-frame:hover {
+            border-color: #8b6b4a;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-name {
+            font-size: 28px;
+            color: #d4c4a8;
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        
+        .profile-dates {
+            font-size: 14px;
+            color: #777;
+            letter-spacing: 3px;
+            margin-bottom: 35px;
+        }
+        
+        .profile-bio {
+            max-width: 320px;
+            text-align: center;
+            line-height: 2.4;
+            font-size: 15px;
+            color: #aaa;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 2px;
+            border-left: 2px solid #8b6b4a;
+        }
+        
+        /* ========== 相册页 ========== */
+        .gallery-page {
+            background: #1e2d3a;
+            min-height: auto;
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #d4c4a8;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 8px;
+            font-weight: 300;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 1;
+            background: #2a3a4a;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 灯箱效果 */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            z-index: 2001;
+        }
+        
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+        
+        /* ========== 讣告页 ========== */
+        .obituary-page {
+            background: linear-gradient(180deg, #2a3a4a 0%, #1e2d3a 100%);
+        }
+        
+        .obituary-container {
+            max-width: 360px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 2px;
+            padding: 40px 30px;
+            border-top: 2px solid #8b6b4a;
+        }
+        
+        .obituary-title {
+            font-size: 18px;
+            color: #d4c4a8;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 8px;
+            font-weight: 300;
+        }
+        
+        .obituary-content {
+            font-size: 15px;
+            line-height: 2.6;
+            color: #bbb;
+            text-align: justify;
+        }
+        
+        .obituary-content strong {
+            color: #d4c4a8;
+        }
+        
+        .obituary-signature {
+            text-align: right;
+            margin-top: 35px;
+            color: #666;
+            font-size: 13px;
+            line-height: 2.2;
+        }
+        
+        /* ========== 悼念互动页 ========== */
+        .memorial-page {
+            background: #2a3a4a;
+        }
+        
+        .memorial-actions {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .action-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .action-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #3a4a5a;
+        }
+        
+        .action-btn:hover .action-icon {
+            border-color: #8b6b4a;
+            box-shadow: 0 0 30px rgba(139, 107, 74, 0.2);
+        }
+        
+        .action-text {
+            font-size: 14px;
+            color: #888;
+            letter-spacing: 3px;
+        }
+        
+        .counter {
+            font-size: 11px;
+            color: #555;
+            margin-top: 5px;
+        }
+        
+        /* 献花动画 */
+        .flower-particle {
+            position: fixed;
+            font-size: 24px;
+            pointer-events: none;
+            animation: flowerFall 4s ease-out forwards;
+            z-index: 1000;
+            filter: grayscale(40%) sepia(30%);
+        }
+        
+        @keyframes flowerFall {
+            0% {
+                opacity: 0.8;
+                transform: translateY(-50px) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+        
+        /* 点烛动画 */
+        .candle-lit {
+            animation: flicker 0.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0% { filter: brightness(1) drop-shadow(0 0 10px rgba(255, 180, 100, 0.5)); }
+            100% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 180, 100, 0.8)); }
+        }
+        
+        /* ========== 留言页 ========== */
+        .message-page {
+            background: linear-gradient(180deg, #2a3a4a 0%, #1a2634 100%);
+            min-height: auto;
+            padding: 80px 20px;
+        }
+        
+        .message-container {
+            width: 100%;
+            max-width: 360px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #3a4a5a;
+            border-radius: 2px;
+            color: #ddd;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: #8b6b4a;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .form-input::placeholder {
+            color: #555;
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #3a4a5a;
+            border-radius: 2px;
+            color: #ddd;
+            font-size: 14px;
+            outline: none;
+            min-height: 100px;
+            resize: none;
+            transition: all 0.3s;
+        }
+        
+        .form-textarea:focus {
+            border-color: #8b6b4a;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .form-textarea::placeholder {
+            color: #555;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 1px solid #8b6b4a;
+            border-radius: 2px;
+            color: #d4c4a8;
+            font-size: 14px;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: rgba(139, 107, 74, 0.1);
+        }
+        
+        /* 留言成功提示 */
+        .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(26, 38, 52, 0.98);
+            color: #d4c4a8;
+            padding: 20px 35px;
+            border-radius: 2px;
+            font-size: 14px;
+            z-index: 2000;
+            display: none;
+            border: 1px solid #3a4a5a;
+        }
+        
+        /* ========== 留言展示区 ========== */
+        .messages-list {
+            margin-top: 50px;
+            width: 100%;
+        }
+        
+        .messages-list-title {
+            font-size: 12px;
+            color: #555;
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+        }
+        
+        .message-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 2px solid #8b6b4a;
+            padding: 15px 18px;
+            margin-bottom: 12px;
+        }
+        
+        .message-item-name {
+            font-size: 13px;
+            color: #d4c4a8;
+            margin-bottom: 8px;
+        }
+        
+        .message-item-content {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.8;
+        }
+        
+        .message-item-time {
+            font-size: 11px;
+            color: #444;
+            margin-top: 10px;
+        }
+        
+        /* ========== 页脚 ========== */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: #4a5a6a;
+            font-size: 12px;
+            letter-spacing: 3px;
+            background: #1a2634;
+            border-top: 1px solid #2a3a4a;
+        }
+        
+        /* ========== 动画 ========== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-8px); }
+            60% { transform: translateX(-50%) translateY(-4px); }
+        }
+        
+        /* 导航点 */
+        .nav-dots {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3a4a5a;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-dot:hover,
+        .nav-dot.active {
+            background: #8b6b4a;
+        }
+        
+        .nav-dot.active {
+            transform: scale(1.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航点 -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="0"></div>
+        <div class="nav-dot" data-section="1"></div>
+        <div class="nav-dot" data-section="2"></div>
+        <div class="nav-dot" data-section="3"></div>
+        <div class="nav-dot" data-section="4"></div>
+        <div class="nav-dot" data-section="5"></div>
+    </div>
+    
+    <!-- 封面页 -->
+    <section class="hero-section" id="section0">
+        <div class="cover-content">
+            <h1 class="cover-title">深切緬懷</h1>
+            <h2 class="cover-name">朱莉莉女士</h2>
+            <p class="cover-dates">【出生年份】—【逝世年份】</p>
+            <div class="cover-line"></div>
+            <p class="cover-subtitle">永遠懷念</p>
+        </div>
+        <p class="scroll-hint">向下滑動</p>
+    </section>
+    
+    <!-- 人物简介页 -->
+    <section class="page profile-page" id="section1">
+        <div class="photo-frame" onclick="openLightboxImg(this)">
+            <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="紀念照片">
+        </div>
+        <h2 class="profile-name">朱莉莉女士</h2>
+        <p class="profile-dates">【出生年月日】—【逝世年月日】</p>
+        <div class="profile-bio">
+            一生勤勉，品德高尚。<br>
+            敬業樂群，與人為善。<br>
+            您的精神永遠激勵我們前行。
+        </div>
+    </section>
+    
+    <!-- 相册页 -->
+    <section class="page gallery-page" id="section2">
+        <h2 class="section-title">美好回憶</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightboxImg(this)">
+                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片1">
+            </div>
+            <div class="gallery-item" onclick="openLightboxImg(this)">
+                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片2">
+            </div>
+            <div class="gallery-item" onclick="openLightboxImg(this)">
+                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片3">
+            </div>
+            <div class="gallery-item" onclick="openLightboxImg(this)">
+                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片4">
+            </div>
+            <div class="gallery-item" onclick="openLightboxImg(this)">
+                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片5">
+            </div>
+            <div class="gallery-item" onclick="openLightboxImg(this)">
+                <img src="https://s.coze.cn/image/OGORge0GcFQ/" alt="照片6">
+            </div>
+        </div>
+    </section>
+    
+    <!-- 讣告页 -->
+    <section class="page obituary-page" id="section3">
+        <div class="obituary-container">
+            <h2 class="obituary-title">悼 念 詞</h2>
+            <div class="obituary-content">
+                尊敬的主管/同事：<br><br>
+                我們懷著無比沈痛的心情向各位告知，我們的好同事好朋友<strong>朱莉莉女士</strong>於2026年03月04日在臺北離世。
+            </div>
+            <div class="obituary-signature">
+                【治喪委員會/家屬】<br>
+                【日期】
+            </div>
+        </div>
+    </section>
+    
+    <!-- 悼念互动页 -->
+    <section class="page memorial-page" id="section4">
+        <h2 class="section-title">寄託哀思</h2>
+        <div class="memorial-actions">
+            <div class="action-btn" onclick="offerFlower()">
+                <div class="action-icon">💐</div>
+                <span class="action-text">獻花</span>
+                <span class="counter" id="flowerCount">已有 0 人獻花</span>
+            </div>
+            <div class="action-btn" onclick="lightCandle()">
+                <div class="action-icon" id="candleIcon">🕯️</div>
+                <span class="action-text">點燭</span>
+                <span class="counter" id="candleCount">已有 0 人點燭</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 留言页 -->
+    <section class="page message-page" id="section5">
+        <div class="message-container">
+            <h2 class="section-title">留言追思</h2>
+            <form id="messageForm" onsubmit="submitMessage(event)">
+                <div class="form-group">
+                    <label class="form-label">您的姓名</label>
+                    <input type="text" class="form-input" id="msgName" placeholder="請輸入姓名" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">追思留言</label>
+                    <textarea class="form-textarea" id="msgContent" placeholder="寫下您的思念..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">提交留言</button>
+            </form>
+            
+            <!-- 留言展示区 -->
+            <div class="messages-list" id="messagesList">
+                <p class="messages-list-title">— 留言記錄 —</p>
+                <div class="message-item">
+                    <div class="message-item-name">張三</div>
+                    <div class="message-item-content">永遠懷念您，願您在天堂安好。</div>
+                    <div class="message-item-time">2026年4月8日</div>
+                </div>
+                <div class="message-item">
+                    <div class="message-item-name">李四</div>
+                    <div class="message-item-content">您的教誨我會永遠銘記，一路走好。</div>
+                    <div class="message-item-time">2026年4月8日</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>紀念我們的至愛 · 我們將永遠懷念她</p>
+    </footer>
+    
+    <!-- 灯箱 -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="">
+    </div>
+    
+    <!-- 提示框 -->
+    <div class="toast" id="toast">留言提交成功</div>
+
+    <script>
+        // 初始化计数
+        let flowerCount = 0;
+        let candleCount = 0;
+        
+        // 导航点功能
+        const navDots = document.querySelectorAll('.nav-dot');
+        const sections = document.querySelectorAll('section');
+        
+        navDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const sectionIndex = dot.getAttribute('data-section');
+                sections[sectionIndex].scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // 滚动监听
+        window.addEventListener('scroll', () => {
+            let current = 0;
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    current = index;
+                }
+            });
+            
+            navDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === current);
+            });
+        });
+        
+        // 献花功能
+        function offerFlower() {
+            flowerCount++;
+            document.getElementById('flowerCount').textContent = '已有 ' + flowerCount + ' 人獻花';
+            
+            const flowers = ['🌸', '🌺', '🌹', '🌷', '💐', '🌼'];
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const flower = document.createElement('div');
+                    flower.className = 'flower-particle';
+                    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                    flower.style.left = Math.random() * 100 + '%';
+                    flower.style.top = '-50px';
+                    document.body.appendChild(flower);
+                    
+                    setTimeout(() => flower.remove(), 4000);
+                }, i * 100);
+            }
+        }
+        
+        // 点烛功能
+        function lightCandle() {
+            candleCount++;
+            document.getElementById('candleCount').textContent = '已有 ' + candleCount + ' 人點燭';
+            
+            const candleIcon = document.getElementById('candleIcon');
+            candleIcon.classList.add('candle-lit');
+            
+            setTimeout(() => {
+                candleIcon.classList.remove('candle-lit');
+            }, 3000);
+        }
+        
+        // 灯箱功能 - 图片放大
+        function openLightboxImg(element) {
+            const img = element.querySelector('img');
+            if (img) {
+                document.getElementById('lightboxImg').src = img.src;
+                document.getElementById('lightbox').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // ESC键关闭灯箱
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+        
+        // 提交留言
+        function submitMessage(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('msgName').value;
+            const content = document.getElementById('msgContent').value;
+            
+            const messagesList = document.getElementById('messagesList');
+            const messageItem = document.createElement('div');
+            messageItem.className = 'message-item';
+            
+            const now = new Date();
+            const dateStr = now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
+            
+            messageItem.innerHTML = `
+                <div class="message-item-name">${escapeHtml(name)}</div>
+                <div class="message-item-content">${escapeHtml(content)}</div>
+                <div class="message-item-time">${dateStr}</div>
+            `;
+            
+            const firstMessage = messagesList.querySelector('.message-item');
+            if (firstMessage) {
+                messagesList.insertBefore(messageItem, firstMessage);
+            } else {
+                messagesList.appendChild(messageItem);
+            }
+            
+            showToast('留言提交成功，感謝您的追思');
+            
+            document.getElementById('msgName').value = '';
+            document.getElementById('msgContent').value = '';
+        }
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2500);
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
