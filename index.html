@@ -76,7 +76,7 @@
         }
         
         .cover-title {
-            font-size: 41px;
+            font-size: 43px;
             letter-spacing: 12px;
             color: #4a4a4a;
             font-weight: 600;
@@ -107,11 +107,11 @@
         }
         
         .cover-name::before {
-            left: calc(50% - 100px);
+            left: calc(50% - 120px);
         }
         
         .cover-name::after {
-            right: calc(50% - 100px);
+            right: calc(50% - 120px);
             left: auto;
         }
         
@@ -516,7 +516,22 @@
             border-radius: 0 4px 4px 0;
         }
         
-        .message-item-name { color: #7a9b57; font-size: 13px; margin-bottom: 6px; }
+        .message-item-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        
+        .message-item-avatar {
+            font-size: 18px;
+        }
+        
+        .message-item-name { 
+            color: #7a9b57; 
+            font-size: 13px; 
+        }
+        
         .message-item-content { color: #6a6a6a; font-size: 13px; line-height: 1.7; }
         .message-item-content img { max-width: 100%; border-radius: 4px; margin-top: 8px; }
         .message-item-time { color: #b8b8b8; font-size: 11px; margin-top: 8px; }
@@ -712,6 +727,15 @@
         const SUPABASE_KEY = 'sb_publishable_qxkCzLx_AMSVnyRjsiuLQg_n6uBfd8l';
         const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         
+        // ========== 随机头像和名字 ==========
+        const avatars = ['🌸', '🌺', '🌹', '🌷', '🌻', '🌼', '🍀', '🍁', '🍂', '🍃', '💐', '🌾', '🎋', '🌿', '☘️'];
+        const names = [
+            '白云', '清风', '明月', '星辰', '静水', '远山', '晨曦', '暮雪',
+            '春风', '秋叶', '夏雨', '冬阳', '青松', '翠竹', '幽兰', '雅菊',
+            '思远', '念安', '怀恩', '忆念', '守望', '安然', '静好', '岁月',
+            '云端', '山间', '溪流', '林深', '花开', '落叶', '飞雪', '流云'
+        ];
+        
         // ========== 匿名登录 ==========
         async function initAuth() {
             const { data: { session } } = await db.auth.getSession();
@@ -762,7 +786,16 @@
                         });
                     }
                     const time = new Date(msg.created_at).toLocaleString('zh-CN');
-                    div.innerHTML = '<div class="message-item-name">匿名用户</div>' +
+                    
+                    // 根据留言ID生成固定的头像和名字（同一留言刷新后不会变）
+                    const seed = msg.id ? parseInt(msg.id.toString().replace(/\D/g, '').slice(-6) || '0') : 0;
+                    const avatar = avatars[seed % avatars.length];
+                    const name = names[seed % names.length];
+                    
+                    div.innerHTML = '<div class="message-item-header">' +
+                            '<span class="message-item-avatar">' + avatar + '</span>' +
+                            '<span class="message-item-name">' + name + '</span>' +
+                        '</div>' +
                         '<div class="message-item-content">' + content + '</div>' +
                         (imagesHtml ? '<div class="message-item-image">' + imagesHtml + '</div>' : '') +
                         '<div class="message-item-time">' + time + '</div>';
