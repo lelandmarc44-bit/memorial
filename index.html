@@ -101,125 +101,133 @@
             content: '';
             position: absolute;
             top: 50%;
-            width: 40px;
+            width: 55px;
             height: 1px;
             background: linear-gradient(90deg, transparent, #9ab87a, transparent);
         }
         
         .cover-name::before {
-            right: 100%;
-            margin-right: 15px;
+            left: calc(50% - 100px);
         }
         
         .cover-name::after {
-            left: 100%;
-            margin-left: 15px;
+            right: calc(50% - 100px);
+            left: auto;
         }
         
         .cover-dates {
             font-size: 17px;
-            letter-spacing: 4px;
             color: #8a8a8a;
-            margin: 8px 0;
+            letter-spacing: 4px;
+            margin-top: 18px;
         }
         
         .cover-line {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #9ab87a, transparent);
-            margin: 15px 0;
+            width: 1px;
+            height: 43px;
+            background: linear-gradient(180deg, #9ab87a, transparent);
+            margin: 18px auto;
         }
         
         .cover-subtitle {
             font-size: 16px;
-            letter-spacing: 3px;
-            color: #7a7a7a;
-            margin-top: 10px;
+            color: #9a9a9a;
+            letter-spacing: 8px;
+            margin-bottom: 12px;
         }
         
         .scroll-hint {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+            color: #b8b8b8;
             font-size: 14px;
-            color: #9a9a9a;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             animation: bounce 2s infinite;
-        }
-        
-        .scroll-hint::after {
-            content: '↓';
-            display: block;
+            margin-top: 6px;
             text-align: center;
-            margin-top: 8px;
-            font-size: 18px;
         }
         
-        /* ========== 人物简介 ========== */
+        /* ========== 人物简介页 ========== */
         .profile-page {
-            padding-top: 60px;
-            padding-bottom: 60px;
+            background: linear-gradient(180deg, #faf9f6 0%, #f7f6f1 100%);
         }
         
         .photo-frame {
             width: 140px;
-            height: 140px;
-            border-radius: 50%;
+            height: 175px;
+            background: linear-gradient(145deg, #ffffff, #f8f7f2);
+            border: 2px solid #e8e5de;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
             overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 30px rgba(122, 155, 87, 0.15);
-            margin-bottom: 25px;
-            background: linear-gradient(135deg, #f5f3ee, #e8e5de);
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .photo-frame:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 40px rgba(122, 155, 87, 0.25);
+            border-color: #9ab87a;
         }
         
         .photo-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .photo-frame img.loaded {
+            opacity: 1;
+        }
+        
+        .photo-frame.loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
         }
         
         .profile-name {
-            font-size: 26px;
+            font-size: 24px;
+            color: #7a9b57;
             letter-spacing: 5px;
-            color: #4a4a4a;
             margin-bottom: 10px;
-            font-weight: 500;
+            font-weight: 400;
         }
         
         .profile-dates {
-            font-size: 14px;
-            color: #8a8a8a;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
+            font-size: 13px;
+            color: #9a9a9a;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
         }
         
         .profile-bio {
-            max-width: 280px;
+            max-width: 300px;
             text-align: center;
             line-height: 2;
-            color: #6a6a6a;
             font-size: 14px;
+            color: #6a6a6a;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
+            border-left: 2px solid #9ab87a;
         }
         
-        /* ========== 相册 ========== */
+        /* ========== 相册页 ========== */
         .gallery-page {
-            background: linear-gradient(180deg, #f5f3ee 0%, #f8f7f2 100%);
+            background: #f7f6f1;
+            min-height: auto;
+            padding: 45px 20px;
         }
         
         .section-title {
-            font-size: 20px;
-            letter-spacing: 4px;
-            color: #4a4a4a;
-            margin-bottom: 30px;
+            font-size: 18px;
+            color: #7a9b57;
             text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 6px;
             font-weight: 600;
         }
         
@@ -233,17 +241,19 @@
         
         .gallery-item {
             aspect-ratio: 1;
-            border-radius: 8px;
+            background: #ffffff;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
-            background: #f5f5f5;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
+            transition: all 0.3s;
         }
         
         .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(122, 155, 87, 0.2);
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
         
         .gallery-item img {
@@ -258,14 +268,8 @@
             opacity: 1;
         }
         
-        .gallery-item.loading::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, #f5f5f5 0%, #e8e5de 50%, #f5f5f5 100%);
+        .gallery-item.loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
             animation: shimmer 1.5s infinite;
         }
@@ -275,20 +279,59 @@
             100% { background-position: 200% 0; }
         }
         
-        /* ========== 献花点烛 ========== */
-        .tribute-page {
-            background: linear-gradient(180deg, #f8f7f2 0%, #f5f3ee 100%);
+        /* 灯箱效果 */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
         }
         
-        .tribute-container {
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #7a9b57;
+            font-size: 36px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            z-index: 2001;
+        }
+        
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+        
+        /* ========== 悼念互动页 ========== */
+        .memorial-page {
+            background: linear-gradient(180deg, #f7f6f1 0%, #f5f3ee 100%);
+        }
+        
+        .memorial-actions {
             display: flex;
             gap: 40px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
+            margin-bottom: 15px;
         }
         
-        .tribute-item {
+        .action-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -296,56 +339,63 @@
             transition: transform 0.3s;
         }
         
-        .tribute-item:hover {
-            transform: translateY(-5px);
+        .action-btn:active {
+            transform: scale(0.95);
         }
         
-        .tribute-icon {
-            width: 80px;
-            height: 80px;
+        .action-icon {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 2px solid #e8e5de;
+            font-size: 32px;
+            margin-bottom: 12px;
             transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #e8e5de;
         }
         
-        .tribute-item:hover .tribute-icon {
+        .action-btn:hover .action-icon {
             border-color: #9ab87a;
-            box-shadow: 0 8px 30px rgba(122, 155, 87, 0.2);
+            box-shadow: 0 0 25px rgba(154, 184, 122, 0.25);
         }
         
-        .tribute-count {
-            margin-top: 12px;
+        .action-text {
             font-size: 13px;
-            color: #8a8a8a;
+            color: #7a9b57;
+            letter-spacing: 2px;
         }
         
-        /* 花瓣飘落动画 */
+        .counter {
+            font-size: 10px;
+            color: #9a9a9a;
+            margin-top: 4px;
+        }
+        
+        /* 献花动画 */
         .flower-particle {
             position: fixed;
-            font-size: 24px;
-            z-index: 9999;
+            font-size: 22px;
             pointer-events: none;
-            animation: fall 4s linear forwards;
+            animation: flowerFall 4s ease-out forwards;
+            z-index: 1000;
+            filter: sepia(20%);
         }
         
-        @keyframes fall {
+        @keyframes flowerFall {
             0% {
+                opacity: 0.8;
                 transform: translateY(-50px) rotate(0deg);
-                opacity: 1;
             }
             100% {
-                transform: translateY(100vh) rotate(360deg);
                 opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
             }
         }
         
-        /* 蜡烛光效 */
+        /* 点烛动画 */
         .candle-lit {
             animation: flicker 0.5s ease-in-out infinite alternate;
         }
@@ -535,8 +585,6 @@
             transform: scale(1.3);
         }
     </style>
-    <!-- Supabase SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <div class="nav-dots">
@@ -567,8 +615,8 @@
         <h2 class="profile-name">朱莉莉</h2>
         <p class="profile-dates">1975年 — 2026年</p>
         <div class="profile-bio">
-            一生勤勉,品德高尚。<br>
-            敬业乐群,与人为善。<br>
+            一生勤勉，品德高尚。<br>
+            敬业乐群，与人为善。<br>
             您的精神永远激励我们前行。
         </div>
     </section>
@@ -598,76 +646,94 @@
         </div>
     </section>
     
-    <!-- 献花点烛页 -->
-    <section class="page tribute-page" id="section3">
-        <h2 class="section-title">寄托哀思</h2>
-        <div class="tribute-container">
-            <div class="tribute-item" onclick="offerFlower()">
-                <div class="tribute-icon">🌸</div>
-                <div class="tribute-count" id="flowerCount">已有 0 人献花</div>
+    <!-- 悼念互动页 -->
+    <section class="page memorial-page" id="section3">
+        <h2 class="section-title">追思寄托</h2>
+        <div class="memorial-actions">
+            <div class="action-btn" onclick="offerFlower()">
+                <div class="action-icon">💐</div>
+                <span class="action-text">献花</span>
+                <span class="counter" id="flowerCount">已有 0 人献花</span>
             </div>
-            <div class="tribute-item" onclick="lightCandle()">
-                <div class="tribute-icon" id="candleIcon">🕯️</div>
-                <div class="tribute-count" id="candleCount">已有 0 人点烛</div>
+            <div class="action-btn" onclick="lightCandle()">
+                <div class="action-icon" id="candleIcon">🕯️</div>
+                <span class="action-text">点烛</span>
+                <span class="counter" id="candleCount">已有 0 人点烛</span>
             </div>
         </div>
     </section>
     
     <!-- 留言页 -->
     <section class="page message-page" id="section4">
-        <h2 class="section-title">留言·念想寄存处</h2>
         <div class="message-container">
+            <h2 class="section-title">留言•念想寄存处</h2>
+            
             <div class="msg-input-area">
-                <textarea class="msg-textarea" id="msgContent" placeholder="写下您的思念..."></textarea>
+                <textarea class="msg-textarea" id="msgContent" placeholder="写下您的思念与祝福..."></textarea>
+                
                 <div class="img-upload-row" id="imgUploadRow">
                     <div class="img-upload-btn" id="uploadBtn">
-                        <input type="file" accept="image/jpeg,image/png,image/gif" onchange="addImage(this)">
+                        <input type="file" accept="image/*" onchange="addImage(this)">
                         <span class="plus-icon">+</span>
                         <span class="text">添加图片</span>
                     </div>
                 </div>
+                
                 <div class="send-row">
-                    <button class="send-btn" onclick="sendMessage()">发送</button>
+                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">发送</button>
                 </div>
             </div>
+            
+            <!-- 留言列表 -->
             <div class="messages-list" id="messagesList"></div>
         </div>
     </section>
     
     <!-- 页脚 -->
-    <div class="footer">
-        纪念我们的至爱 · 我们将永远怀念她
-    </div>
+    <footer class="footer">
+        <p>纪念我们的至爱 · 我们将永远怀念她</p>
+    </footer>
     
     <!-- 灯箱 -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightboxImg" src="" alt="">
     </div>
     
     <!-- 提示框 -->
     <div class="toast" id="toast">留言提交成功</div>
 
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <script>
         // ========== Supabase 初始化 ==========
         const SUPABASE_URL = 'https://hfrfezfxmrctrkmkjikj.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_qxkCzLx_AMSVnyRjsiuLQg_n6uBfd8l';
-        
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         
         // ========== 匿名登录 ==========
         async function initAuth() {
-            const { data: { session } } = await supabase.auth.getSession();
+            const { data: { session } } = await db.auth.getSession();
             if (!session) {
-                await supabase.auth.signInAnonymously();
+                await db.auth.signInAnonymously();
+            }
+        }
+        
+        // ========== 初始化数据 ==========
+        async function initTributes() {
+            const { data } = await db.from('tributes').select('*');
+            if (!data || data.length === 0) {
+                await db.from('tributes').insert([
+                    { type: 'flower', count: 0 },
+                    { type: 'candle', count: 0 }
+                ]);
             }
         }
         
         // ========== 加载数据 ==========
         async function loadTributes() {
-            const { data, error } = await supabase
-                .from('tributes')
-                .select('*');
-            
+            const { data } = await db.from('tributes').select('*');
             if (data) {
                 data.forEach(item => {
                     if (item.type === 'flower') {
@@ -680,30 +746,25 @@
         }
         
         async function loadMessages() {
-            const { data, error } = await supabase
-                .from('messages')
-                .select('*')
-                .order('created_at', { ascending: false });
-            
+            const { data } = await db.from('messages').select('*').order('created_at', { ascending: false });
             const listEl = document.getElementById('messagesList');
             listEl.innerHTML = '';
             
-            if (data) {
+            if (data && data.length > 0) {
                 data.forEach(function(msg) {
                     const div = document.createElement('div');
                     div.className = 'message-item';
-                    
                     let content = msg.content || '';
+                    let imagesHtml = '';
                     if (msg.images && msg.images.length > 0) {
                         msg.images.forEach(imgUrl => {
-                            content += '<br><img src="' + imgUrl + '" style="max-width:100%;border-radius:4px;margin-top:8px;">';
+                            imagesHtml += '<img src="' + imgUrl + '" onclick="openLightbox(\'' + imgUrl + '\')" style="max-width:100%;border-radius:4px;margin-top:8px;cursor:pointer;">';
                         });
                     }
-                    
                     const time = new Date(msg.created_at).toLocaleString('zh-CN');
-                    
                     div.innerHTML = '<div class="message-item-name">匿名用户</div>' +
                         '<div class="message-item-content">' + content + '</div>' +
+                        (imagesHtml ? '<div class="message-item-image">' + imagesHtml + '</div>' : '') +
                         '<div class="message-item-time">' + time + '</div>';
                     listEl.appendChild(div);
                 });
@@ -712,21 +773,13 @@
         
         // ========== 献花功能 ==========
         async function offerFlower() {
-            const { data: current } = await supabase
-                .from('tributes')
-                .select('count')
-                .eq('type', 'flower')
-                .single();
-            
+            const { data: current } = await db.from('tributes').select('count').eq('type', 'flower').single();
             const newCount = (current?.count || 0) + 1;
-            
-            await supabase
-                .from('tributes')
-                .update({ count: newCount })
-                .eq('type', 'flower');
-            
+            await db.from('tributes').update({ count: newCount }).eq('type', 'flower');
             document.getElementById('flowerCount').textContent = '已有 ' + newCount + ' 人献花';
+            showToast('已献花，感谢您的追思');
             
+            // 花瓣飘落
             const flowers = ['🌸', '🌺', '🌹', '🌷', '💐', '🌼'];
             for (let i = 0; i < 15; i++) {
                 setTimeout(() => {
@@ -743,20 +796,11 @@
         
         // ========== 点烛功能 ==========
         async function lightCandle() {
-            const { data: current } = await supabase
-                .from('tributes')
-                .select('count')
-                .eq('type', 'candle')
-                .single();
-            
+            const { data: current } = await db.from('tributes').select('count').eq('type', 'candle').single();
             const newCount = (current?.count || 0) + 1;
-            
-            await supabase
-                .from('tributes')
-                .update({ count: newCount })
-                .eq('type', 'candle');
-            
+            await db.from('tributes').update({ count: newCount }).eq('type', 'candle');
             document.getElementById('candleCount').textContent = '已有 ' + newCount + ' 人点烛';
+            showToast('已点烛，感谢您的追思');
             
             const candleIcon = document.getElementById('candleIcon');
             candleIcon.classList.add('candle-lit');
@@ -772,52 +816,41 @@
                 showToast('最多只能上传3张图片');
                 return;
             }
-            
             const file = input.files[0];
             if (!file) return;
             
-            const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-            if (!validTypes.includes(file.type)) {
+            if (!['image/jpeg', 'image/png', 'image/gif'].includes(file.type)) {
                 showToast('请上传 jpg、png 或 gif 格式的图片');
                 input.value = '';
                 return;
             }
-            
             if (file.size > 5 * 1024 * 1024) {
                 showToast('图片大小不能超过 5MB');
                 input.value = '';
                 return;
             }
             
+            showToast('图片上传中...');
             const fileName = 'messages/' + Date.now() + '_' + Math.random().toString(36).substr(2, 9) + '.' + file.name.split('.').pop();
-            
-            const { data, error } = await supabase
-                .storage
-                .from('images')
-                .upload(fileName, file);
+            const { error } = await db.storage.from('images').upload(fileName, file);
             
             if (error) {
                 showToast('图片上传失败，请重试');
-                console.error(error);
                 input.value = '';
                 return;
             }
             
-            const { data: urlData } = supabase
-                .storage
-                .from('images')
-                .getPublicUrl(fileName);
-            
+            const { data: urlData } = db.storage.from('images').getPublicUrl(fileName);
             uploadedImages.push(urlData.publicUrl);
             renderImagePreviews();
             input.value = '';
+            showToast('图片上传成功');
         }
         
         function renderImagePreviews() {
             const row = document.getElementById('imgUploadRow');
             const uploadBtn = document.getElementById('uploadBtn');
-            const previews = row.querySelectorAll('.img-preview-item');
-            previews.forEach(p => p.remove());
+            row.querySelectorAll('.img-preview-item').forEach(p => p.remove());
             
             uploadedImages.forEach((img, index) => {
                 const div = document.createElement('div');
@@ -825,7 +858,6 @@
                 div.innerHTML = '<img src="' + img + '" alt="预览"><button class="remove-btn" onclick="removeImage(' + index + ')">×</button>';
                 row.insertBefore(div, uploadBtn);
             });
-            
             uploadBtn.style.display = uploadedImages.length >= maxImages ? 'none' : 'flex';
         }
         
@@ -837,31 +869,30 @@
         // ========== 发送留言 ==========
         async function sendMessage() {
             const content = document.getElementById('msgContent').value.trim();
-            
             if (!content && uploadedImages.length === 0) {
                 showToast('请输入留言内容或上传图片');
                 return;
             }
             
-            const { data, error } = await supabase
-                .from('messages')
-                .insert([{
-                    content: content,
-                    images: uploadedImages.length > 0 ? uploadedImages : null
-                }]);
+            const btn = document.getElementById('sendBtn');
+            btn.disabled = true;
+            
+            const { error } = await db.from('messages').insert([{
+                content: content,
+                images: uploadedImages.length > 0 ? uploadedImages : null
+            }]);
+            
+            btn.disabled = false;
             
             if (error) {
                 showToast('留言发送失败，请重试');
-                console.error(error);
                 return;
             }
             
             document.getElementById('msgContent').value = '';
             uploadedImages = [];
             renderImagePreviews();
-            
             await loadMessages();
-            
             showToast('留言已发送，感谢您的追思');
         }
         
@@ -873,6 +904,12 @@
                 document.getElementById('lightbox').classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
+        }
+        
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
         
         function closeLightbox() {
@@ -961,6 +998,7 @@
         // ========== 页面初始化 ==========
         window.addEventListener('DOMContentLoaded', async () => {
             await initAuth();
+            await initTributes();
             await loadTributes();
             await loadMessages();
             initImageLoading();
