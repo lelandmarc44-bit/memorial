@@ -727,7 +727,47 @@
         const SUPABASE_URL = 'https://hfrfezfxmrctrkmkjikj.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_qxkCzLx_AMSVnyRjsiuLQg_n6uBfd8l';
         const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        
+        // ========== 阿里云OSS配置 ==========
+const OSS_CONFIG = {
+    accessKeyId: 'LTAI5tAkmztANF6DqzwWcfgi',
+    accessKeySecret: 'uwi3SFkK8TAEaXqXtPfX5sADuKwJqk',
+    bucket: 'zhulili-images',
+    region: 'oss-cn-hongkong',
+    endpoint: 'https://zhulili-images.oss-cn-hongkong.aliyuncs.com'
+};
+
+// ========== OSS签名生成函数 ==========
+async function generateOSSSignature(fileName, fileSize) {
+    const expiration = new Date();
+    expiration.setHours(expiration.getHours() + 1);
+    
+    const policy = {
+        expiration: expiration.toISOString(),
+        conditions: [
+            ['content-length-range', 0, fileSize],
+            ['starts-with', '$key', fileName],
+            ['eq', '$success_action_status', '200']
+        ]
+    };
+    
+    const policyBase64 = btoa(JSON.stringify(policy));
+    
+    const encoder = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+        'raw',
+        encoder.encode(OSS_CONFIG.accessKeySecret),
+        { name: 'HMAC', hash: 'SHA-1' },
+        false,
+        ['sign']
+    );
+    const signature = await crypto.subtle.sign('HMAC', key, encoder.encode(policyBase64));
+    const signatureBase64 = btoa(String.fromCharCode(...new Uint8Array(signature)));
+    
+    return {
+        policy: policyBase64,
+        signature: signatureBase64
+    };
+}
         // ========== 随机头像和名字 ==========
         const avatars = ['🌸', '🌺', '🌹', '🌷', '🌻', '🌼', '🍀', '🍁', '🍂', '🍃', '💐', '🌾', '🎋', '🌿', '☘️'];
         const names = [
@@ -841,64 +881,79 @@
             setTimeout(() => candleIcon.classList.remove('candle-lit'), 3000);
         }
         
-        // ========== 图片上传 ==========
-        let uploadedImages = [];
-        const maxImages = 3;
+    // ========== 图片上传 ==========
+let uploadedImages = [];
+const maxImages = 3;
+
+async function addImage(input) {
+    if (uploadedImages.length >= maxImages) {
+        showToast('最多只能上传3张图片');
+        return;
+    }
+    const file = input.files[0];
+    if (!file) return;
+    
+    if (!['image/jpeg', 'image/png', 'image/gif'].includes(file.type)) {
+        showToast('请上传 jpg、png 或 gif 格式的图片');
+        input.value = '';
+        return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+        showToast('图片大小不能超过 5MB');
+        input.value = '';
+        return;
+    }
+    
+    showToast('图片上传中...');
+    
+    const timestamp = Date.now();
+    const randomStr = Math.random().toString(36).substr(2, 9);
+    const ext = file.name.split('.').pop();
+    const fileName = `messages/${timestamp}_${randomStr}.${ext}`;
+    
+    try {
+        const { policy, signature } = await generateOSSSignature(fileName, file.size);
         
-        async function addImage(input) {
-            if (uploadedImages.length >= maxImages) {
-                showToast('最多只能上传3张图片');
-                return;
-            }
-            const file = input.files[0];
-            if (!file) return;
-            
-            if (!['image/jpeg', 'image/png', 'image/gif'].includes(file.type)) {
-                showToast('请上传 jpg、png 或 gif 格式的图片');
-                input.value = '';
-                return;
-            }
-            if (file.size > 5 * 1024 * 1024) {
-                showToast('图片大小不能超过 5MB');
-                input.value = '';
-                return;
-            }
-            
-            showToast('图片上传中...');
-            const fileName = 'messages/' + Date.now() + '_' + Math.random().toString(36).substr(2, 9) + '.' + file.name.split('.').pop();
-            const { error } = await db.storage.from('images').upload(fileName, file);
-            
-            if (error) {
-                showToast('图片上传失败，请重试');
-                input.value = '';
-                return;
-            }
+        const formData = new FormData();
+        formData.append('key', fileName);
+        formData.append('policy', policy);
+        formData.append('OSSAccessKeyId', OSS_CONFIG.accessKeyId);
+        formData.append('signature', signature);
+        formData.append('success_action_status', '200');
+        formData.append('file', file);
+        
+        const response = await fetch(OSS_CONFIG.endpoint, {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (response.ok) {
+            const ossUrl = `${OSS_CONFIG.endpoint}/${fileName}`;
+            uploadedImages.push(ossUrl);
+            renderImagePreviews();
+            input.value = '';
+            showToast('图片上传成功');
+        } else {
+            throw new Error('OSS上传失败');
+        }
+    } catch (error) {
+        console.error('OSS上传失败，回退到Supabase:', error);
+        
+        try {
+            const { error: supabaseError } = await db.storage.from('images').upload(fileName, file);
+            if (supabaseError) throw supabaseError;
             
             const { data: urlData } = db.storage.from('images').getPublicUrl(fileName);
             uploadedImages.push(urlData.publicUrl);
             renderImagePreviews();
             input.value = '';
             showToast('图片上传成功');
+        } catch (fallbackError) {
+            showToast('图片上传失败，请重试');
+            input.value = '';
         }
-        
-        function renderImagePreviews() {
-            const row = document.getElementById('imgUploadRow');
-            const uploadBtn = document.getElementById('uploadBtn');
-            row.querySelectorAll('.img-preview-item').forEach(p => p.remove());
-            
-            uploadedImages.forEach((img, index) => {
-                const div = document.createElement('div');
-                div.className = 'img-preview-item';
-                div.innerHTML = '<img src="' + img + '" alt="预览"><button class="remove-btn" onclick="removeImage(' + index + ')">×</button>';
-                row.insertBefore(div, uploadBtn);
-            });
-            uploadBtn.style.display = uploadedImages.length >= maxImages ? 'none' : 'flex';
-        }
-        
-        function removeImage(index) {
-            uploadedImages.splice(index, 1);
-            renderImagePreviews();
-        }
+    }
+}
         
         // ========== 发送留言 ==========
         async function sendMessage() {
